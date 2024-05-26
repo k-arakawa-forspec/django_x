@@ -9,7 +9,7 @@ class TopView(TemplateView):
   template_name = "accounts/top.html"
 
 
-class HomeView(LoginRequiredMixin, TemplateView):
+class HomeView(TemplateView):
   template_name = "accounts/home.html"
 
 
@@ -18,5 +18,5 @@ class LoginView(LoginView):
   template_name = "accounts/login.html"
 
 
-class LogoutView(LoginRequiredMixin, LogoutView):
+class LogoutView(LogoutView):
   template_name = "accounts/login.html"
