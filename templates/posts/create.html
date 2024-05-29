@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}POST{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>POST</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {% for field in form %}
+            {{ field.label }}
+            <br>
+            {{ field }}
+            <br>
+            {{ field.errors }}
+        {% endfor %}
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}
