@@ -1,4 +1,4 @@
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 from django.views.generic.base import TemplateView
 from django.urls import reverse_lazy
 from . import forms
@@ -24,3 +24,13 @@ class IndexView(TemplateView):
     post_list = Post.objects.all()
     context["post_list"] = post_list
     return context
+
+
+class ListView(ListView):
+  template_name = "posts/list.html"
+
+  """ (1) ListView のクラス変数 model を指定するケース """
+  model = Post
+
+  # contextに格納される名前をデフォルトの"object_list"から変更
+  context_object_name = 'post_list'
