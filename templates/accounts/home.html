@@ -5,9 +5,20 @@
 <div class="container">
     <h1 class="my-5"></h1>
     <p>{{ user.nickname }}さん、こんにちは。</p>
-    <form action="{% url 'accounts:logout' %}" method="POST">
-        {% csrf_token %}
-        <button type="submit">ログアウト</button>
-    </form>
-</div>
+
+    <div>
+        <ul>
+            <li>
+                <a href="{% url 'posts:create' %}">ポストする</a>
+            </li>
+        </ul>
+    </div>
+    
+    <div>
+        <form action="{% url 'accounts:logout' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">ログアウト</button>
+        </form>
+    </div>
+    </div>
 {% endblock %}
