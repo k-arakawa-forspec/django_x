@@ -36,8 +36,17 @@ class ListView(ListView):
   context_object_name = 'post_list'
   """
 
-  """ (2) ListView のクラス変数 queryset を指定するケース """
+  """ (2) ListView のクラス変数 queryset を指定するケース
   # クラス変数のため静的な指定のみ。
   # 動的な指定(例: リクエスト内容に応じた絞込み)をしたい場合は
   # get_queryset() のオーバーライドを用いる必要がある。
   queryset = Post.objects.all()
+  """
+
+  """ (3) ListView のメソッド get_queryset() をオーバーライドするケース """
+  model = Post
+
+  def get_queryset(self):
+    queryset = super().get_queryset()
+    queryset = queryset.all()
+    return queryset
