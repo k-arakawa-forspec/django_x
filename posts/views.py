@@ -29,8 +29,15 @@ class IndexView(TemplateView):
 class ListView(ListView):
   template_name = "posts/list.html"
 
-  """ (1) ListView のクラス変数 model を指定するケース """
+  """ (1) ListView のクラス変数 model を指定するケース
   model = Post
 
   # contextに格納される名前をデフォルトの"object_list"から変更
   context_object_name = 'post_list'
+  """
+
+  """ (2) ListView のクラス変数 queryset を指定するケース """
+  # クラス変数のため静的な指定のみ。
+  # 動的な指定(例: リクエスト内容に応じた絞込み)をしたい場合は
+  # get_queryset() のオーバーライドを用いる必要がある。
+  queryset = Post.objects.all()
