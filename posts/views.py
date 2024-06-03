@@ -48,5 +48,6 @@ class ListView(ListView):
 
   def get_queryset(self):
     queryset = super().get_queryset()
-    queryset = queryset.all()
+    # ログインユーザの post の降順
+    queryset = queryset.filter(user=self.request.user).order_by("id").reverse()
     return queryset
