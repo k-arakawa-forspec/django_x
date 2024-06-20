@@ -11,6 +11,9 @@ class ListView(ListView):
   model = Post
   ordering = ["-id"]
 
+  def get_queryset(self):
+    return super().get_queryset().filter(user_id=self.request.user.id)
+
 
 class CreateView(CreateView):
   form_class = forms.PostForm
