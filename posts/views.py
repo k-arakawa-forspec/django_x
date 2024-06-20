@@ -9,6 +9,7 @@ from .models import Post
 class ListView(ListView):
   template_name = "posts/list.html"
   model = Post
+  ordering = ["-id"]
 
 
 class CreateView(CreateView):
