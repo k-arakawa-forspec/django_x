@@ -1,4 +1,4 @@
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 from django.views.generic.base import TemplateView
 from django.urls import reverse_lazy
 from . import forms
@@ -6,6 +6,11 @@ from .models import Post
 
 
 # Create your views here.
+class ListView(ListView):
+  template_name = "posts/list.html"
+  model = Post
+
+
 class CreateView(CreateView):
   form_class = forms.PostForm
   template_name = "posts/create.html"
