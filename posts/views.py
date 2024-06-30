@@ -28,7 +28,10 @@ class IndexView(TemplateView):
 
 
 class ListView(ListView):
-    
   template_name = "posts/list.html"
   model = Post
-  
+
+  def get_queryset(self, **kwargs):
+    posts = super().get_queryset(**kwargs)
+    only_login_user_posts = posts.filter(user=self.request.user)
+    return only_login_user_posts
