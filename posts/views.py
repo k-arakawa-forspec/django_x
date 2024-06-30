@@ -30,3 +30,9 @@ class IndexView(TemplateView):
 class ListView(ListView):
   template_name = "posts/list.html"
   model = Post
+
+  def get_queryset(self, **kwargs):
+    posts_queryset = super().get_queryset(**kwargs)
+    login_user_posts = posts_queryset.filter(
+        user=self.request.user).order_by('-id')
+    return login_user_posts
