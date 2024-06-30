@@ -28,8 +28,7 @@ class IndexView(TemplateView):
 
 
 class ListView(ListView):
+    
   template_name = "posts/list.html"
   model = Post
-  context_object_name = "post_list"
-  
   
