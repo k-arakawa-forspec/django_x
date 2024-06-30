@@ -33,5 +33,5 @@ class ListView(ListView):
 
   def get_queryset(self, **kwargs):
     posts = super().get_queryset(**kwargs)
-    only_login_user_posts = posts.filter(user=self.request.user)
+    only_login_user_posts = posts.filter(user=self.request.user).order_by('-id')
     return only_login_user_posts
