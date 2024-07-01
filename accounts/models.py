@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
+from profiles.models import Profile
 
 class User(AbstractUser):
   # AbstractUser から継承される username を削除
@@ -12,3 +12,20 @@ class User(AbstractUser):
 
   USERNAME_FIELD = 'login_id'
   REQUIRED_FIELDS = ['nickname']
+
+  def save(self, *args, **kwargs):
+    # https://docs.djangoproject.com/ja/5.0/ref/models/instances/#state
+    adding = self._state.adding
+    # 下記の実装でも同様
+    #adding = not self._state.db
+    #adding = self.pk is None
+
+    super().save(args, kwargs)
+
+    # save() でINSERTされる場合であっても
+    # save() 後に `_state.adding` を参照すると False になる
+    #print(f'adding after save: {self._state.adding}')
+
+    # INSERTされる場合のみ Profile も create する
+    if adding:
+      Profile.objects.create(user=self)
