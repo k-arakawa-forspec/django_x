@@ -9,10 +9,10 @@
         {% for post in post_list %}
             <p>
                 <div>
-                    {{ post.content }}
+                    @{{ post.user.nickname }} {{ post.created_at }}
                 </div>
                 <div>
-                    {{ post.created_at }}
+                    {{ post.content }}
                 </div>
             </p>
         {% endfor %}
