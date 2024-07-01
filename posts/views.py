@@ -32,8 +32,12 @@ class ListView(ListView):
   """ (1) ListView のクラス変数 model を指定するケース
   model = Post
 
-  # contextに格納される名前をデフォルトの"object_list"から変更
-  context_object_name = 'post_list'
+  # contextに格納される名前は "object_list" もしくは "[モデル名]_list" となる。
+  # templateからは以下のどちらでもアクセスできる。
+  # - object_list
+  # - post_list
+  # これら以外の名前でtemplateからアクセスしたい場合は任意の名前で格納する必要がある。
+  # context_object_name = 'hoge_list'
   """
 
   """ (2) ListView のクラス変数 queryset を指定するケース
