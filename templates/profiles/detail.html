@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}プロフィール{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-5">{{ profile.user.nickname }} さんのプロフィール</h1>
+
+    <div>
+        {{ profile.self_introduction | linebreaksbr }}
+    </div>
+
+    {% if profile.user == user %}
+        <div>
+            <a href="{% url 'profiles:update_login_user' %}">編集する</a>
+        </div>
+    {% endif %}
+
+</div>
+{% endblock %}
