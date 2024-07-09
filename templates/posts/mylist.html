@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Myポスト一覧{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Myポスト一覧</h1>
+    <ul>
+        <li>
+            <a href="{% url 'accounts:home' %}">ホームに戻る</a>
+        </li>
+    </ul>
+    <div>
+        {% for post in post_list %}
+            <p>
+                <div>
+                    {{ post.content }}
+                </div>
+                <div>
+                    {{ post.created_at }}
+                </div>
+            </p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -10,3 +10,7 @@ class Post(models.Model):
 
   def __str__(self):
     return self.id
+
+# 24/6/20課題により追加
+class Meta:
+   ordering = ["-id"] 

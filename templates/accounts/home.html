@@ -5,20 +5,36 @@
 <div class="container">
     <h1 class="my-5"></h1>
     <p>{{ user.nickname }}さん、こんにちは。</p>
+    <form action="{% url 'accounts:logout' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">ログアウト</button>
+    </form>
 
     <div>
         <ul>
             <li>
-                <a href="{% url 'posts:create' %}">ポストする</a>
+                <a href="{% url 'posts:create' %}">投稿する</a>
+            </li>
+            <li>
+                <a href="{% url 'posts:mylist' %}">My一覧へ</a>
             </li>
         </ul>
     </div>
     
-    <div>
-        <form action="{% url 'accounts:logout' %}" method="POST">
-            {% csrf_token %}
-            <button type="submit">ログアウト</button>
-        </form>
+    <div class="container">
+        <h1>全ポスト一覧</h1>
+        <div>
+            {% for post in post_list %}
+                <p>
+                    <div>
+                        {{ post.content }}
+                    </div>
+                    <div>
+                        {{ post.created_at }}
+                    </div>
+                </p>
+            {% endfor %}
+        </div>
     </div>
-    </div>
+</div>
 {% endblock %}

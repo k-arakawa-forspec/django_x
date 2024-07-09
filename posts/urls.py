@@ -5,5 +5,8 @@ app_name = "posts"
 
 urlpatterns = [
     path("create/", views.CreateView.as_view(), name="create"),
-    path("index/", views.IndexView.as_view(), name="index"),
+
+    # 24/6/20課題により追加
+    # 自分のポストのみ表示
+    path("mylist/", views.MyPostView.as_view(), name="mylist"),
 ]
