@@ -13,12 +13,20 @@
             </li>
         </ul>
     </div>
-    
+
+    <div>
+        <ul>
+            <li>
+                <a href="{% url 'posts:index' %}" 　>ポスト一覧</a>
+            </li>
+        </ul>
+    </div>
+
     <div>
         <form action="{% url 'accounts:logout' %}" method="POST">
             {% csrf_token %}
             <button type="submit">ログアウト</button>
         </form>
     </div>
-    </div>
+</div>
 {% endblock %}

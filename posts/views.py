@@ -1,6 +1,7 @@
-from django.views.generic import CreateView
-from django.views.generic.base import TemplateView
 from django.urls import reverse_lazy
+from django.views.generic import CreateView, ListView
+from django.views.generic.base import TemplateView
+
 from . import forms
 from .models import Post
 
@@ -24,3 +25,12 @@ class IndexView(TemplateView):
     post_list = Post.objects.all()
     context["post_list"] = post_list
     return context
+
+
+class ListView(ListView):
+  model = Post
+  template_name = "posts/list.html"
+  context_object_name = "post_list"
+
+  def get_queryset(self):
+    return Post.objects.all().filter(user=self.request.user).order_by("id").reverse()
