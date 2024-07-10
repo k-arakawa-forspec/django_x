@@ -134,3 +134,11 @@ LOGOUT_REDIRECT_URL = "accounts:login"
 # ログイン不要なview
 # https://django-glrm.readthedocs.io/en/latest/readme.html#public-views
 PUBLIC_VIEWS = ['accounts.views.LoginView', 'accounts.views.SignUpView']
+
+#router = SimpleRouter(trailing_slash=false)
+
+{
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    }
+}
