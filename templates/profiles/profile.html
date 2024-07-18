@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}プロフィール画面{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>プロフィール画面</h1>
+
+    <div>
+        <p>
+            <div>
+                自己紹介: {{ profile.self_introduction }}
+            </div>
+            <div>
+                登録日時: {{ profile.created_at }}
+            </div>
+            <div>
+                更新日時: {{ profile.updated_at }}
+            </div>
+        </p>
+    </div>
+</div>
+{% endblock %}
