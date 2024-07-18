@@ -9,3 +9,9 @@ class ProfileView(DetailView):
 
     def get_queryset(self):
         return super().get_queryset().select_related('user')
+
+
+class MyProfileView(ProfileView):
+    def get_queryset(self):
+        self.kwargs.update(pk=self.request.user.pk)
+        return super().get_queryset()
