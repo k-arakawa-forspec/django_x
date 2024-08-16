@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}プロフィール{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-5">{{ profile.user.nickname }} さんのプロフィール</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        {{ form.self_introduction.label }}
+        <br>
+        <textarea name="self_introduction" rows="10" cols="80">{{ form.self_introduction.value }}</textarea>
+        <br>
+        {{ form.self_introduction.errors }}
+        <br>
+
+        <button type="submit">更新</button>
+    </form>
+</div>
+{% endblock %}
