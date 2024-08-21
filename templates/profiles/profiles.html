@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}プロフィール{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>プロフィール</h1>
+    <form action="", method = "get">
+        <p>
+            <b>ユーザID</b><br>
+            {{ profile.user.login_id }}
+        </p>
+        <p>
+            <b>自己紹介</b><br>
+            {{ profile.self_introduction }}
+        </p>
+        <br>
+        {% if profile.user.id == user.id %}
+        <button type="">
+            <a href="{% url 'profiles:profileUpdate' %}" />プロフィール編集</a>
+        </button>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}
