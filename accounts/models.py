@@ -12,3 +12,8 @@ class User(AbstractUser):
 
   USERNAME_FIELD = 'login_id'
   REQUIRED_FIELDS = ['nickname']
+
+  def save(self, *args, **kwargs):
+
+    # スーパークラスの save() を実行
+    super().save(args, kwargs)
