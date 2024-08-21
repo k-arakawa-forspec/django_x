@@ -10,6 +10,10 @@ from profiles.models import Profile
 
 
 # Create your views here.
+class OtherProfView(ListView):
+  model = Post
+  template_name = "profiles/prof.html"
+
 class MyProfView(ListView):
   model = Post
   template_name = "profiles/myprof.html"
