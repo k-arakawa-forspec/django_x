@@ -8,7 +8,6 @@ from django.urls import reverse_lazy
 class ProfileView(DetailView):
     model = Profile
     template_name = 'profiles/profile.html'
-    is_my_profile = False
 
     # `OneToOneField: User.id <=> Profile.user_id` であるため、明示的な `Profile => User` の取得は不要っぽい？
     # def get_queryset(self):
@@ -16,12 +15,11 @@ class ProfileView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['is_my_profile'] = self.is_my_profile
+        context['is_my_profile'] = self.kwargs.get('pk') == self.request.user.pk
         return context
 
 
 class MyProfileView(ProfileView):
-    is_my_profile = True
 
     def get_queryset(self):
         # Error: "Generic detail view MyProfileView must be called with either an object pk or a slug in the URLconf."
