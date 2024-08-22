@@ -1,5 +1,6 @@
-from django.views.generic import DetailView
+from django.views.generic import DetailView, UpdateView
 from .models import Profile
+from django.urls import reverse_lazy
 
 
 # Create your views here.
@@ -19,6 +20,17 @@ class ProfileView(DetailView):
 
 class MyProfileView(ProfileView):
     is_my_profile = True
+
+    def get_queryset(self):
+        self.kwargs.update(pk=self.request.user.pk)
+        return super().get_queryset()
+
+
+class ProfileUpdateView(UpdateView):
+    model = Profile
+    fields = ['self_introduction']
+    template_name = 'profiles/update.html'
+    success_url = reverse_lazy('profiles:my')
 
     def get_queryset(self):
         self.kwargs.update(pk=self.request.user.pk)
