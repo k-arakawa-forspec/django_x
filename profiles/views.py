@@ -36,3 +36,7 @@ class ProfileUpdateView(UpdateView):
     def get_queryset(self):
         self.kwargs.update(pk=self.request.user.pk)
         return super().get_queryset()
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
