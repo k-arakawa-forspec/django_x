@@ -6,7 +6,6 @@ from django.urls import reverse_lazy
 
 from . import forms
 
-
 class HomeView(TemplateView):
   template_name = "accounts/home.html"
 
@@ -15,10 +14,8 @@ class LoginView(LoginView):
   form_class = forms.LoginForm
   template_name = "accounts/login.html"
 
-
 class LogoutView(LogoutView):
   pass
-
 
 class SignUpView(CreateView):
   form_class = forms.SignUpForm
