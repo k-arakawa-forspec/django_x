@@ -10,8 +10,9 @@ class ProfileView(DetailView):
     template_name = 'profiles/profile.html'
     is_my_profile = False
 
-    def get_queryset(self):
-        return super().get_queryset().select_related('user')
+    # `OneToOneField: User.id <=> Profile.user_id` であるため、明示的な `Profile => User` の取得は不要っぽい？
+    # def get_queryset(self):
+    #     return super().get_queryset().select_related('user')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -23,6 +24,8 @@ class MyProfileView(ProfileView):
     is_my_profile = True
 
     def get_queryset(self):
+        # Error: "Generic detail view MyProfileView must be called with either an object pk or a slug in the URLconf."
+        # PK指定がないURL設定でエラーが発生するため、ログインユーザーのPKを設定することで解消。
         self.kwargs.update(pk=self.request.user.pk)
         return super().get_queryset()
 
@@ -34,6 +37,8 @@ class ProfileUpdateView(UpdateView):
     success_url = reverse_lazy('profiles:my')
 
     def get_queryset(self):
+        # Error: "Generic detail view ProfileUpdateView must be called with either an object pk or a slug in the URLconf."
+        # PK指定がないURL設定でエラーが発生するため、ログインユーザーのPKを設定することで解消。
         self.kwargs.update(pk=self.request.user.pk)
         return super().get_queryset()
 
