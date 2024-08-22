@@ -1,5 +1,6 @@
 from django.views.generic import DetailView, UpdateView
 from .models import Profile
+from . import forms
 from django.urls import reverse_lazy
 
 
@@ -28,7 +29,7 @@ class MyProfileView(ProfileView):
 
 class ProfileUpdateView(UpdateView):
     model = Profile
-    fields = ['self_introduction']
+    form_class = forms.ProfileUpdateForm
     template_name = 'profiles/update.html'
     success_url = reverse_lazy('profiles:my')
 
