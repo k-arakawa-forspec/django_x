@@ -1,15 +1,15 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Post
+from .models import Profile
 
 
-class PostForm(ModelForm):
+class ProfileForm(ModelForm):
 
   class Meta:
-    model = Post
-    fields = ('content', )
+    model = Profile
+    fields = ('self_introduction', )
     widgets = {
-      'content': forms.Textarea(
+      'self_introduction': forms.Textarea(
         attrs={
           'rows': 10,
           'cols': 80,

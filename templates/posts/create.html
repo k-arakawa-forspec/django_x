@@ -4,11 +4,12 @@
 {% block content %}
 <div class="container">
     <h1>ポスト</h1>
+
     <form action="" method="POST">
         {% csrf_token %}
         {{ form.non_field_errors }}
         {% for field in form %}
-            {{ field.label }}
+            <label for="{{ field.label.id_for_label }}" class="form-label">{{ field.label }}</label>
             <br>
             {{ field }}
             <br>
