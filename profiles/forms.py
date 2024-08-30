@@ -9,11 +9,5 @@ class ProfileForm(ModelForm):
     model = Profile
     fields = ('self_introduction', )
     widgets = {
-      'self_introduction': forms.Textarea(
-        attrs={
-          'rows': 10,
-          'cols': 80,
-          'class': 'form-control',
-        }
-      ),
+      'self_introduction': forms.Textarea(),
     }

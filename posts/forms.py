@@ -9,11 +9,5 @@ class PostForm(ModelForm):
     model = Post
     fields = ('content', )
     widgets = {
-      'content': forms.Textarea(
-        attrs={
-          'rows': 10,
-          'cols': 80,
-          'class': 'form-control',
-        }
-      ),
+      'content': forms.Textarea(),
     }
