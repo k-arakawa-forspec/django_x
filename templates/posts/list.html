@@ -7,14 +7,7 @@
 
     <div>
         {% for post in post_list %}
-            <p>
-                <div>
-                    {{ post.content }}
-                </div>
-                <div>
-                    {{ post.created_at }}
-                </div>
-            </p>
+            {% include "posts/partials/post.html" %}
         {% endfor %}
     </div>
 </div>
