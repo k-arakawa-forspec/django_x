@@ -140,3 +140,20 @@ LOGOUT_REDIRECT_URL = "accounts:login"
 # ログイン不要なview
 # https://django-glrm.readthedocs.io/en/latest/readme.html#public-views
 PUBLIC_VIEWS = ['accounts.views.LoginView', 'accounts.views.SignUpView']
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.db.backends': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+    },
+}
