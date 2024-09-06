@@ -1,25 +1,31 @@
  # 2024/07/18 課題
+from . import forms
 from django.views.generic import UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic.base import ListView
+from django.views.generic import DetailView
+
 
 # モデルのインポート
-from . import forms
-from posts.models import Post
 from profiles.models import Profile
 
 
 # Create your views here.
-class OtherProfView(ListView):
-  model = Post
+class OtherProfView(DetailView):
+  # 自分以外のユーザーの投稿を表示
+  model = Profile
   template_name = "profiles/prof.html"
 
-class MyProfView(ListView):
-  model = Post
+  Profile.objects.select_related('user')
+
+class MyProfView(DetailView):
+  # 自分の投稿を表示
+  model = Profile
   template_name = "profiles/myprof.html"
+
+  def get_context(self):
+    return Profile.objects.select_related(user = self.request.user)
 
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
   model = Profile
   template_name = "profiles/update.html"
   form_class = forms.ProfileUpdateForm
-

@@ -5,18 +5,14 @@
 <div class="container">
     <h1>マイプロフィール</h1>
     <a href="{% url 'accounts:home' %}">ホームに戻る</a>
-    <form action="", method = "get">
         <dev>
-            <p>ログインID:{{ pofile.login_id }}</p>
-            <p>ニックネーム: {{ pofile.nickname }}</p>
+            <p>ログインID:{{ user.login_id }}</p>
+            <p>ニックネーム: {{ user.nickname }}</p>
             <p>自己紹介:{{ pofile.self_introduction }}</p> 
-            <p>項目B</p>
-            <p>項目C</p>
         </dev>
         <button type="">
             <a />プロフィールを編集する</a>
             
         </button>
-    </form>
 </div>
 {% endblock %}

@@ -4,11 +4,12 @@
 {% block content %}
 <div class="container">
     <h1>ポスト一覧</h1>
-
+    <a href="{% url 'accounts:home' %}">ホームに戻る</a>
     <div>
         {% for post in post_list %}
             <p>
                 <div>
+                    <a href="">{{ user.nickname }}</a>
                     {{ post.content }}
                 </div>
                 <div>

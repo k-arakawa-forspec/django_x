@@ -1,4 +1,5 @@
 from django.db import models
+from profiles.models import Profile
 from django.contrib.auth.models import AbstractUser
 
 
@@ -14,6 +15,7 @@ class User(AbstractUser):
   REQUIRED_FIELDS = ['nickname']
 
   def save(self, *args, **kwargs):
-
     # スーパークラスの save() を実行
     super().save(args, kwargs)
+  
+    Profile.objects.get_or_create(user=self)

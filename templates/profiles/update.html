@@ -1,22 +1,20 @@
 {% extends "base.html" %}
-{% block title %}プロフィール更新{% endblock %}
+{% block title %}プロフィール更新画面{% endblock %}
 
 {% block content %}
 <div class="container">
-    <form >
+    <form action="" method="post">{% csrf_token %}
         <h3>プロフィール変更</h3>
+            {% for field in form %}
+                {{ field.label }}
+                <br>
+                {{ field }}
+                <br>
+                {{ field.errors }}
+            {% endfor %}
         <div>
-            <label>ユーザー名:</label>
+            <button type="submit" value="Update">更新</button>
         </div>
-        <div>
-            <label>自己紹介：</label>
-        </div>
-        <div>
-            <label>プロフィール</label>
-        </div>
-        <div>
-            <button class="btn btn-primary" type="submit">変更</button>
-         </div>
     </form>
 </div>
 {% endblock %}

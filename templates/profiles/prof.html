@@ -7,9 +7,9 @@
     <a href="{% url 'accounts:home' %}">ホームに戻る</a>
     <form action="", method = "get">
         <dev>
-            <p>ログインID:{{ login_id }}</p>
-            <p>ニックネーム: {{ nickname }}</p>
-            <p>自己紹介:{{ self_introduction }}</p> 
+            <p>ログインID:{{ profile.user.login_id }}</p>
+            <p>ニックネーム: {{ profile.user.nickname }}</p>
+            <p>自己紹介:{{ profile.self_introduction }}</p> 
             <p>項目B</p>
             <p>項目C</p>
         </dev>
