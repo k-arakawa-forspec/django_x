@@ -14,5 +14,8 @@ class User(AbstractUser):
   REQUIRED_FIELDS = ['nickname']
 
   def save(self, *args, **kwargs):
+    is_adding = self._state.adding
     super().save(args, kwargs)
-    Profile.objects.get_or_create(user=self)
+    if is_adding:
+      Profile.objects.create(user=self)
+    # Profile.objects.get_or_create(user=self)

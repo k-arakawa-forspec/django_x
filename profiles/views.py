@@ -9,7 +9,7 @@ from .models import Profile
 class ProfileView(DetailView):
   template_name = 'profiles/profile.html'
   model = Profile
-  queryset = Profile.objects.select_related('user')
+
 
 class MyProfileView(DetailView):
   template_name = 'profiles/profile.html'
@@ -17,6 +17,7 @@ class MyProfileView(DetailView):
 
   def get_object(self, queryset=None):
     return Profile.objects.get(user_id=self.request.user.id)
+
 
 class UpdateProfileView(UpdateView):
   form_class = forms.UpdateProfileForm
