@@ -2,23 +2,9 @@
 {% block title %}プロフィール{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>プロフィール</h1>
-    <form action="", method = "get">
-        <p>
-            <b>ユーザID</b><br>
-            {{ profile.user.login_id }}
-        </p>
-        <p>
-            <b>自己紹介</b><br>
-            {{ profile.self_introduction }}
-        </p>
-        <br>
-        {% if profile.user.id == user.id %}
-        <button type="">
-            <a href="{% url 'profiles:profileUpdate' %}" />プロフィール編集</a>
-        </button>
-        {% endif %}
-    </form>
-</div>
+  <h1>{{ profile.name }}</h1>
+  <p>誕生日: {{ profile.birthday }}</p>
+  <p>好きなもの: {{ profile.favorite }}</p>
+  <p>一言: {{ profile.comment }}</p>
+  <a href="{% url 'profile-update' profile.pk %}">プロフィールを編集</a>
 {% endblock %}

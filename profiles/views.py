@@ -1,28 +1,30 @@
 from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView
-
-from . import forms
 from .models import Profile
+from .forms import ProfileForm
 
+class ProfileDetailView(DetailView):
+    model = Profile
+    template_name = 'profiles/profile.html'
+    context_object_name = 'profile'
+    queryset = Profile.objects.select_related('user')
 
-class ProfileView(DetailView):
-  template_name = 'profiles/profile.html'
-  model = Profile
-  queryset = Profile.objects.select_related('user')
+    def get_object(self, queryset=None):
+        return Profile.objects.get(user_id=self.kwargs['user_id'])
 
-class MyProfileView(DetailView):
-  template_name = 'profiles/profile.html'
-  model = Profile
+class MyProfileDetailView(DetailView):
+    model = Profile
+    template_name = 'profiles/profile.html'
+    context_object_name = 'profile'
 
-  def get_object(self, queryset=None):
-    return Profile.objects.get(user_id=self.request.user.id)
+    def get_object(self, queryset=None):
+        return Profile.objects.get(user_id=self.request.user.id)
 
-class UpdateProfileView(UpdateView):
-  form_class = forms.UpdateProfileForm
-  template_name = 'profiles/profileUpdate.html'
-  model = Profile
-  success_url = reverse_lazy("profiles:profile")
+class ProfileUpdateView(UpdateView):
+    model = Profile
+    form_class = ProfileForm
+    template_name = 'profiles/profileUpdate.html'
 
-  def get_object(self, queryset=None):
-    return Profile.objects.get(user_id=self.request.user.id)
+    def get_success_url(self):
+        return reverse_lazy('myProfile')

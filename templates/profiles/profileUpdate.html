@@ -2,21 +2,10 @@
 {% block title %}編集{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>編集</h1>
-    <form action="", method = "post">
-      {% csrf_token %}
-      {{ form.non_field_errors }}
-      {% for field in form %}
-          {{ field.label }}
-          <br>
-          {{ field }}
-          <br>
-          {{ field.errors }}
-      {% endfor %}
-      {% if profile.user.id == user.id %}
-      <button type="submit">完了</button>
-      {% endif %}
-    </form>
-</div>
+  <h1>プロフィールを編集</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">保存</button>
+  </form>
 {% endblock %}
