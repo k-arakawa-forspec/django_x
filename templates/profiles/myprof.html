@@ -5,14 +5,13 @@
 <div class="container">
     <h1>マイプロフィール</h1>
     <a href="{% url 'accounts:home' %}">ホームに戻る</a>
-        <dev>
-            <p>ログインID:{{ user.login_id }}</p>
-            <p>ニックネーム: {{ user.nickname }}</p>
-            <p>自己紹介:{{ pofile.self_introduction }}</p> 
-        </dev>
-        <button type="">
-            <a />プロフィールを編集する</a>
-            
-        </button>
+    <dev>
+        <p>ログインID:{{ user.login_id }}</p>
+        <p>ニックネーム: {{ user.nickname }}</p>
+        <p>自己紹介:{{ pofile.self_introduction }}</p> 
+    </dev>
+    <div>
+        <a href="{% url 'profiles:update' %}">プロフィールを編集する</a>
+    </div>
 </div>
 {% endblock %}

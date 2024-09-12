@@ -9,7 +9,7 @@
         {% for post in post_list %}
             <p>
                 <div>
-                    <a href="">{{ user.nickname }}</a>
+                    <a href="{% url 'profiles:Otherprof' user.pk %}">{{ user.nickname }}</a>
                     {{ post.content }}
                 </div>
                 <div>

@@ -6,7 +6,7 @@
     <h1 class="my-5"></h1>
     <p>{{ user.nickname }}さん、こんにちは。</p>
     <div>
-        <a href="{% url 'profiles:myprof' user.pk  %}">プロフィール</a>
+        <a href="{% url 'profiles:myprof' %}">プロフィール</a>
         <a href="{% url 'posts:list' %}">一覧へ</a>
     </div>
     <div>

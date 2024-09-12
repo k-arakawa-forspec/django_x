@@ -1,9 +1,9 @@
  # 2024/07/18 課題
+from django.urls import reverse_lazy
 from . import forms
 from django.views.generic import UpdateView
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView
-from django.shortcuts import redirect, resolve_url
+from django.shortcuts import resolve_url
 
 
 # モデルのインポート
@@ -18,19 +18,20 @@ class OtherProfView(DetailView):
 
   queryset = Profile.objects.select_related('user')
 
-class MyProfView(LoginRequiredMixin, DetailView):
+class MyProfView(DetailView):
   # 自分の投稿を表示
   model = Profile
   template_name = "profiles/myprof.html"
 
-  def get_context(self, queryset=None):
-    return Profile.objects.select_related(user = self.request.user)
+  def get_object(self, queryset=None):
+    return Profile.objects.get(user_id = self.request.user.id)
 
-class ProfileUpdateView(LoginRequiredMixin, UpdateView):
+class ProfileUpdateView(UpdateView):
   model = Profile
   template_name = "profiles/update.html"
   form_class = forms.ProfileUpdateForm
-
+  success_url = reverse_lazy("profiles:myprof")
+  
   def get_success_url(self):
     return resolve_url('profiles:myprof', pk=self.kwargs['pk'])
 
