@@ -31,12 +31,7 @@ class ProfileUpdateView(UpdateView):
   template_name = "profiles/update.html"
   form_class = forms.ProfileUpdateForm
   success_url = reverse_lazy("profiles:myprof")
-  
-  def get_success_url(self):
-    return resolve_url('profiles:myprof', pk=self.kwargs['pk'])
 
   # contextデータ作成
-  def get_context_data(self, **kwargs):
-    context = super().get_context_data(**kwargs)
-    context["process_name"] = "Update"
-    return context
+  def get_object(self, queryset=None):
+    return Profile.objects.get(user_id=self.request.user.id)

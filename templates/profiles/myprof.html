@@ -8,10 +8,10 @@
     <dev>
         <p>ログインID:{{ user.login_id }}</p>
         <p>ニックネーム: {{ user.nickname }}</p>
-        <p>自己紹介:{{ pofile.self_introduction }}</p> 
+        <p>自己紹介:{{ profile.self_introduction }}</p> 
     </dev>
     <div>
-        <a href="{% url 'profiles:update' %}">プロフィールを編集する</a>
+        <a href="{% url 'profiles:myupdate' %}">プロフィールを編集する</a>
     </div>
 </div>
 {% endblock %}
