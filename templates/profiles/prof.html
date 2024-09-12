@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}プロフィール{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>プロフィール</h1>
+    <a href="{% url 'accounts:home' %}">ホームに戻る</a>
+    <form action="", method = "get">
+        <dev>
+            <p>ログインID:{{ profile.user.login_id }}</p>
+            <p>ニックネーム: {{ profile.user.nickname }}</p>
+            <p>自己紹介:{{ profile.self_introduction }}</p> 
+            <p>項目B</p>
+            <p>項目C</p>
+        </dev>
+    </form>
+</div>
+{% endblock %}

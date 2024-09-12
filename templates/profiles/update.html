@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}プロフィール更新画面{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form action="" method="post">{% csrf_token %}
+        <h3>プロフィール変更</h3>
+            {% for field in form %}
+                {{ field.label }}
+                <br>
+                {{ field }}
+                <br>
+                {{ field.errors }}
+            {% endfor %}
+        <div>
+            <button type="submit" value="Update">更新</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
