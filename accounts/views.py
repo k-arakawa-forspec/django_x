@@ -1,8 +1,10 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, ListView
 from django.urls import reverse_lazy
+
+from posts.views import IndexView
 
 from . import forms
 
@@ -12,6 +14,11 @@ class HomeView(TemplateView):
 
 
 class LoginView(LoginView):
+  form_class = forms.LoginForm
+  template_name = "accounts/login.html"
+
+
+class ListView(ListView):
   form_class = forms.LoginForm
   template_name = "accounts/login.html"
 
@@ -32,3 +39,5 @@ class SignUpView(CreateView):
     user = authenticate(login_id=login_id, password=password)
     login(self.request, user)
     return response
+
+  

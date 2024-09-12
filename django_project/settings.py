@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'posts',
+    'profiles',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,4 @@ LOGOUT_REDIRECT_URL = "accounts:login"
 # ログイン不要なview
 # https://django-glrm.readthedocs.io/en/latest/readme.html#public-views
 PUBLIC_VIEWS = ['accounts.views.LoginView', 'accounts.views.SignUpView']
+
