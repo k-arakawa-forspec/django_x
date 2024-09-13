@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
+{# 荒川さんへまだ作業途中です …#}
+
+
 class User(AbstractUser):
   # AbstractUser から継承される username を削除
   username = None

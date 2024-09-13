@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>プロフィール編集</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div>
+        <div class="header-container">
+            <h1 class="title">プロフィール編集</h1>
+        </div>
+        <form method="post" action="{% url 'todoApp:todoUpdatePage' pk=object.pk %}" class="form-group">
+            {% csrf_token %}
+            <div class="task-create-form">
+                <h3>自己紹介</h3>
+                <input class="task-create-content" type="text" placeholder="Title"
+                    name="{{ form.title.html_name }}" value="{{ object.title }}" autofocus="" autocapitalize="none" maxlength="100" required="">
+                <div id="submit-form">
+                  <button id="task-create-button" type="submit">更新</button>
+              </div>
+            </div>
+        </form>
+    </div>
+  </body>
+</html>
