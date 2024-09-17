@@ -13,7 +13,10 @@ class User(AbstractUser):
 
   USERNAME_FIELD = 'login_id'
   REQUIRED_FIELDS = ['nickname']
-  
+
 def save(self, *args, **kwargs):
-  super().save(args, kwargs)
-  Profile.objects.get_or_create(user=self)
+  is_new = self._state.adding 
+  super().save(*args, **kwargs)
+
+  if is_new:
+      Profile.objects.get_or_create(user=self)
