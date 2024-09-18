@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}ユーザ詳細{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>
+        {{ user.nickname  }}
+    </h1>
+    <p>
+        <span class="opacity-50">@{{ user.login_id }}</span>
+    </p>
+    <p>
+        {{ user.profile.self_introduction|linebreaksbr }}
+    </p>
+
+    <div>
+        {% for post in post_list %}
+            {% include "posts/partials/post.html" %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
