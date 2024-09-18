@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Grid | Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body class="container">
+    <h1>Grid</h1>
+
+    <h2 class="mt-5">"row" の幅を12等分した内の何割を占めるかを指定</h2>
+
+    <div class="container mb-4">
+      <div class="p-1 text-bg-secondary rounded">
+        <pre>
+&lt;!-- 1 * 12 --&gt;
+&lt;div class="row"&gt;
+  &lt;div class="col-1"&gt;&lt;/div&gt;
+  &lt;div class="col-1"&gt;&lt;/div&gt;
+  &lt;div class="col-1"&gt;&lt;/div&gt;
+  ...
+  x 12
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+
+    <div class="container mb-4">
+      <div class="row" style="border:1px solid #dee2e6">
+        <pre>row</pre>
+
+        <div class="col-1" style="border:1px solid">
+          col-1
+          <br>
+          1 / 12
+        </div>
+        <div class="col-1" style="border:1px solid">
+          col-1
+          <br>
+          1 / 12
+        </div>
+          <div class="col-1" style="border:1px solid">
+          col-1
+          <br>
+          1 / 12
+        </div>
+        <div class="col-1" style="border:1px solid">
+          col-1
+          <br>
+          1 / 12
+        </div>
+        <div class="col-1" style="border:1px solid">
+          col-1
+          <br>
+          1 / 12
+        </div>
+        <div class="col-1" style="border:1px solid">
+          col-1
+          <br>
+          1 / 12
+        </div>
+        <div class="col-1" style="border:1px solid">
+          col-1
+          <br>
+          1 / 12
+        </div>
+        <div class="col-1" style="border:1px solid">
+          col-1
+          <br>
+          1 / 12
+        </div>
+        <div class="col-1" style="border:1px solid">
+          col-1
+          <br>
+          1 / 12
+        </div>
+        <div class="col-1" style="border:1px solid">
+          col-1
+          <br>
+          1 / 12
+        </div>
+        <div class="col-1" style="border:1px solid">
+          col-1
+          <br>
+          1 / 12
+        </div>
+        <div class="col-1" style="border:1px solid">
+          col-1
+          <br>
+          1 / 12
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container mb-4">
+      <div class="p-1 text-bg-secondary rounded">
+        <pre>
+&lt;!-- 1 + 2 + 3 + 6 --&gt;
+&lt;div class="row"&gt;
+  &lt;div class="col-1"&gt;&lt;/div&gt;
+  &lt;div class="col-2"&gt;&lt;/div&gt;
+  &lt;div class="col-3"&gt;&lt;/div&gt;
+  &lt;div class="col-6"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+
+    <div class="container mb-4">
+      <div class="row" style="border:1px solid #dee2e6">
+        <pre>row</pre>
+
+        <div class="col-1" style="border:1px solid">
+          col-1
+          <br>
+          1 / 12
+        </div>
+        <div class="col-2" style="border:1px solid">
+          col-2
+          <br>
+          2 / 12
+        </div>
+        <div class="col-3" style="border:1px solid">
+          col-3
+          <br>
+          3 / 12
+        </div>
+        <div class="col-6" style="border:1px solid">
+          col-6
+          <br>
+          6 / 12
+        </div>
+      </div>
+    </div>
+
+    <h2 class="mt-5">"col" だけの場合は "col" 指定数分で均等分割</h2>
+
+    <div class="container mb-4">
+      <div class="p-1 text-bg-secondary rounded">
+        <pre>
+&lt;!-- 12 を 3等分 --&gt;
+&lt;div class="row"&gt;
+  &lt;div class="col"&gt;&lt;/div&gt;
+  &lt;div class="col"&gt;&lt;/div&gt;
+  &lt;div class="col"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+
+    <div class="container mb-4">
+      <div class="row" style="border:1px solid #dee2e6">
+        <pre>row</pre>
+
+        <div class="col" style="border:1px solid">
+          col
+        </div>
+        <div class="col" style="border:1px solid">
+          col
+        </div>
+        <div class="col" style="border:1px solid">
+          col
+        </div>
+      </div>
+    </div>
+
+    <h2 class="mt-5">ブレイクポイントに応じて変動</h2>
+
+    <div class="container mb-4">
+      <div class="p-1 text-bg-secondary rounded">
+        <pre>
+&lt;!-- Meidum未満(<768px)では垂直積み上げ, Medium以上(≥768px)では水平に3分割 --&gt;
+  &lt;div class="row"&gt;
+  &lt;div class="col-12 col-md-4"&gt;&lt;/div&gt;
+  &lt;div class="col-12 col-md-4"&gt;&lt;/div&gt;
+  &lt;div class="col-12 col-md-4"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+
+    <div class="container mb-4">
+      <div class="row" style="border:1px solid #dee2e6">
+        <pre>row</pre>
+
+        <div class="col-12 col-md-4" style="border:1px solid">
+          col-12
+          <br>
+          col-md-4
+        </div>
+        <div class="col-12 col-md-4" style="border:1px solid">
+          col-12
+          <br>
+          col-md-4
+          </div>
+        <div class="col-12 col-md-4" style="border:1px solid">
+          col-12
+          <br>
+          col-md-4
+        </div>
+      </div>
+    </div>
+
+    <div class="container mb-4">
+      <div class="p-1 text-bg-secondary rounded">
+        <pre>
+&lt;!-- ↑と同じレイアウト --&gt;
+
+&lt;!-- Meidum未満(<768px)では垂直積み上げ, Medium以上(≥768px)では水平に3分割 --&gt;
+&lt;div class="row"&gt;
+  &lt;div class="col-md"&gt;&lt;/div&gt;
+  &lt;div class="col-md"&gt;&lt;/div&gt;
+  &lt;div class="col-md"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+
+    <div class="container mb-4">
+      <div class="row" style="border:1px solid #dee2e6">
+        <pre>row</pre>
+
+        <div class="col-md" style="border:1px solid">
+          col-md
+        </div>
+        <div class="col-md" style="border:1px solid">
+          col-md
+        </div>
+        <div class="col-md" style="border:1px solid">
+          col-md
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

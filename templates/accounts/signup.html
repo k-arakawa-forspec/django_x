@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load widget_tweaks %}
 {% block title %}会員登録{% endblock %}
 
 {% block content %}
@@ -8,14 +9,14 @@
         {% csrf_token %}
         {{ form.non_field_errors }}
         {% for field in form %}
-            {{ field.label }}
+            {{ field|add_label_class:"form-label" }}
             <br>
-            {{ field }}
+            {{ field|add_class:"form-control" }}
             <br>
             {{ field.errors }}
         {% endfor %}
         <br>
-        <button type="submit">会員登録</button>
+        <button type="submit" class="btn btn-lg btn-primary">登録</button>
     </form>
 </div>
 {% endblock %}

@@ -11,7 +11,7 @@
 
     {% if profile.user == user %}
         <div>
-            <a href="{% url 'profiles:update_login_user' %}">編集する</a>
+            <a href="{% url 'profiles:update_login_user' %}" class="btn btn-lg btn-primary">編集する</a>
         </div>
     {% endif %}
 

@@ -1,21 +1,23 @@
 {% extends "base.html" %}
+{% load widget_tweaks %}
 {% block title %}ポスト{% endblock %}
 
 {% block content %}
 <div class="container">
     <h1>ポスト</h1>
+
     <form action="" method="POST">
         {% csrf_token %}
         {{ form.non_field_errors }}
         {% for field in form %}
-            {{ field.label }}
+            {{ field|add_label_class:"form-label" }}
             <br>
-            {{ field }}
+            {{ field|add_class:"form-control" }}
             <br>
             {{ field.errors }}
         {% endfor %}
         <br>
-        <button type="submit">ポストする</button>
+        <button type="submit" class="btn btn-lg btn-primary">ポストする</button>
     </form>
 </div>
 {% endblock %}

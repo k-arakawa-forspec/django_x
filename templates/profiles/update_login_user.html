@@ -1,22 +1,24 @@
 {% extends "base.html" %}
+{% load widget_tweaks %}
 {% block title %}プロフィール{% endblock %}
 
 {% block content %}
 <div class="container">
-    <h1 class="my-5">{{ profile.user.nickname }} さんのプロフィール</h1>
+    <h1>{{ profile.user.nickname }} さんのプロフィール</h1>
 
+    {# classを指定するためだけにテンプレートタグではなくHTMLタグを使用するのは避けたいのだが... #}
     <form method="post">
         {% csrf_token %}
         {{ form.non_field_errors }}
-
-        {{ form.self_introduction.label }}
+        {% for field in form %}
+            {{ field|add_label_class:"form-label" }}
+            <br>
+            {{ field|add_class:"form-control" }}
+            <br>
+            {{ field.errors }}
+        {% endfor %}
         <br>
-        <textarea name="self_introduction" rows="10" cols="80">{{ form.self_introduction.value }}</textarea>
-        <br>
-        {{ form.self_introduction.errors }}
-        <br>
-
-        <button type="submit">更新</button>
+        <button type="submit" class="btn btn-lg btn-primary">更新</button>
     </form>
 </div>
 {% endblock %}
