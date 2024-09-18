@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from profiles.models import Profile
 
 
 class User(AbstractUser):
@@ -12,3 +13,10 @@ class User(AbstractUser):
 
   USERNAME_FIELD = 'login_id'
   REQUIRED_FIELDS = ['nickname']
+
+def save(self, *args, **kwargs):
+  is_new = self._state.adding 
+  super().save(*args, **kwargs)
+
+  if is_new:
+      Profile.objects.get_or_create(user=self)

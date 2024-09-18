@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}プロフィール{% endblock %}
+
+{% block content %}
+  <h1>{{ profile.name }}</h1>
+  <p>誕生日: {{ profile.birthday }}</p>
+  <p>好きなもの: {{ profile.favorite }}</p>
+  <p>一言: {{ profile.comment }}</p>
+  <a href="{% url 'profile-update' profile.pk %}">プロフィールを編集</a>
+{% endblock %}
