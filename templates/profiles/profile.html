@@ -16,7 +16,7 @@
             <div>
                 更新日時: {{ profile.updated_at }}
             </div>
-            {% if user.id == profile.user_id %}
+            {% if user == profile.user %}
                 <br />
                 <div>
                     <a href="{% url 'profiles:update' %}">プロフィールを編集する</a>
