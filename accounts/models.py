@@ -3,6 +3,9 @@ from django.contrib.auth.models import AbstractUser
 from profiles.models import Profile
 
 class User(AbstractUser):
+  class Meta:
+    db_table = 'users'
+
   # AbstractUser から継承される username を削除
   username = None
 

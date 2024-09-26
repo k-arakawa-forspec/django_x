@@ -2,6 +2,9 @@ from django.db import models
 
 # Create your models here.
 class Profile(models.Model):
+  class Meta:
+    db_table = 'profiles'
+
   user = models.OneToOneField('accounts.User', on_delete=models.CASCADE, primary_key=True)
   self_introduction = models.CharField('自己紹介', max_length=1024)
   created_at = models.DateTimeField(auto_now_add=True)
