@@ -16,6 +16,8 @@ class User(AbstractUser):
   USERNAME_FIELD = 'login_id'
   REQUIRED_FIELDS = ['nickname']
 
+  follow_user_set = models.ManyToManyField('self', through='follows.Follow', related_name='follower_user_set', symmetrical=False)
+
   def save(self, *args, **kwargs):
     # https://docs.djangoproject.com/ja/5.0/ref/models/instances/#state
     adding = self._state.adding
