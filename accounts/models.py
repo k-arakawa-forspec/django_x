@@ -16,6 +16,7 @@ class User(AbstractUser):
   USERNAME_FIELD = 'login_id'
   REQUIRED_FIELDS = ['nickname']
 
+  # ManyToMany かつ 自己参照 かつ through といきなり複雑度を上げてしまった感がある
   follow_user_set = models.ManyToManyField('self', through='follows.Follow', related_name='follower_user_set', symmetrical=False)
 
   def save(self, *args, **kwargs):
