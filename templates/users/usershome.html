@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block title %}ユーザホーム画面{% endblock %}
+{% block content %}
+          <div>
+                    <h1>{{ profile.user.nickname }}</h1>
+                    <div>@{{ profile.user.login_id }}</div>
+                    
+                    <div>　</div>
+                    <div>{{ profile.self_introduction  | linebreaksbr }}</div>
+                    <div>　</div>
+          </div>
+          <div>
+          {% for lupl in login_users_post_list %}
+                    <div class="row">
+                    <div class="col-1"><i class="bi bi-person-circle"></i></div>
+                    <div class="col-3">{{ lupl.user.nickname }}</div>
+                    <div class="col-3">@{{ lupl.user.login_id }}</div>
+                    <div class="col-5">{{ lupl.created_at }}</div>
+                    
+                    <div class="col-1"></div>
+                    <div class="col-11">{{ lupl.content | linebreaksbr }}</div>
+                    </div>
+          {% endfor %}
+          </div>
+{% endblock %}
+          <!-- <div class="row">
+                    {% include 'partials/post.html' %}
+          </div> -->
