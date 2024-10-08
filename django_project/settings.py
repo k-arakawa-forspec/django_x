@@ -26,11 +26,19 @@ SECRET_KEY = 'django-insecure-4ju2n@$f9d0c=h)_g0lbb%k9&@rf(xa$d$g$&5ri$uf)*gev^4
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    # for Replit
     ".replit.dev",
     ".replit.app",
+    # for Project IDX
     "127.0.0.1",
 ]
-CSRF_TRUSTED_ORIGINS = ["https://*.replit.dev", "https://*.replit.app"]
+CSRF_TRUSTED_ORIGINS = [
+    # for Replit
+    "https://*.replit.dev",
+    "https://*.replit.app",
+    # for Project IDX
+    "https://*.cloudworkstations.dev",
+]
 
 # Application definition
 
