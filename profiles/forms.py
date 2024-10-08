@@ -1,5 +1,6 @@
 from django import forms
 from django.forms import ModelForm
+
 from .models import Profile
 
 
@@ -11,3 +12,12 @@ class ProfileForm(ModelForm):
     widgets = {
       'self_introduction': forms.Textarea(),
     }
+
+class UsersHomeForm(ModelForm):
+
+  def __init__(self, *args, **kargs):
+    super().__init__(*args, **kargs)
+    for login_users_post_list in self.fields.values():
+      login_users_post_list.widget.attrs["class"] = "UsersHomeInform"
+
+
