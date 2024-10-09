@@ -2,9 +2,9 @@ from django.views.generic.detail import DetailView
 from accounts.models import User
 
 # Create your views here.
-class PostsView(DetailView):
+class DetailView(DetailView):
   model = User
-  template_name = "users/posts.html"
+  template_name = "users/detail.html"
   slug_url_kwarg = "login_id"
   slug_field = "login_id"
 
