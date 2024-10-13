@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}ユーザー詳細{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-5">{{ user.nickname }}</h1>
+    <div>@{{ user.login_id }}</div>
+</div>
+{% endblock %}
