@@ -5,5 +5,15 @@
 <div class="container">
     <h1 class="my-5">{{ user.nickname }}</h1>
     <div>@{{ user.login_id }}</div>
+    <div>{{ user.profile.self_introduction }}</div>
+
+    <div class="my-5">
+        {% for post in posts %}
+            <div>
+                <div>{{ post.user.nickname }} @{{ post.user.login_id }} {{ post.created_at }}</div>
+                <div>{{ post.content }}</div>
+            </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
