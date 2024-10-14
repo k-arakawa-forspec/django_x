@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}ホーム_ポスト一覧{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div>
+        {% for post in post_list %}
+            <p>
+                <div>
+                    {{ post.content }}
+                </div>
+                <div>
+                    {{ post.created_at }}
+                </div>
+            </p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

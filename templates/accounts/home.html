@@ -19,6 +19,7 @@
             {% csrf_token %}
             <button type="submit">ログアウト</button>
         </form>
+        <a href="{% url 'users:home' user.login_id %}">自分のホームを確認</a>
     </div>
 </div>
 {% endblock %}
