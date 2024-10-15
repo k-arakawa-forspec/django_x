@@ -3,18 +3,10 @@
 
 {% block content %}
 <div class="container">
-    <h1>ポスト一覧</h1>
-
-    <div>
+    <h1 class="my-5">ポスト一覧</h1>
+    <div class="my-5">
         {% for post in post_list %}
-            <p>
-                <div>
-                    {{ post.content }}
-                </div>
-                <div>
-                    {{ post.created_at }}
-                </div>
-            </p>
+            {% include 'posts/partials/post.html' %}
         {% endfor %}
     </div>
 </div>
