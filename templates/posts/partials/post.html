@@ -1,19 +1,16 @@
-{% extends "base.html" %}
-{% block title %}ホーム_ポスト一覧{% endblock %}
-
 {% block content %}
-<div class="container">
-    <div>
-        {% for post in post_list %}
-            <p>
-                <div>
-                    {{ post.content }}
-                </div>
-                <div>
-                    {{ post.created_at }}
-                </div>
-            </p>
-        {% endfor %}
-    </div>
+<div class="container border">
+    <div class="row">
+        <div class="col-1"><i class="bi bi-person-circle"></i></div>
+        <div class="col-2">
+            <div class="w-bold">{{ post.user.nickname }}</div>
+        </div>
+        <div class="col-8">
+            <div class="text-black-50">@{{ post.user.login_id }} {{ post.created_at }}</div>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col-11">{{ post.content | linebreaksbr }}</div>
+        </div>
+   </div>
 </div>
 {% endblock %}

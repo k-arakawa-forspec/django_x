@@ -10,18 +10,8 @@ class HomeView(DetailView):
   slug_field = "login_id"
   slug_url_kwarg = "login_id"
 
-  def get_queryset(self):
-    queryset = super().get_queryset()
-    return User.objects.filter(login_id=self)
-
-
-
-class PostView(DetailView):
-  template_name = "posts/partials/post.html"
-  model = Post
-
-  def get_queryset(self):
-    queryset = super().get_queryset()
-    # login_idに紐づくのpostの降順
-    queryset = queryset.filter(user=self.request.user).order_by("id").reverse()
-    return queryset
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    post_list = Post.objects.filter(user=self.request.user).order_by("id").reverse()
+    context["post_list"] = post_list
+    return context
