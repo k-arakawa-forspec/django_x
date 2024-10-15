@@ -4,14 +4,16 @@
 {% block content %}
 <div class="container">
     <h1 class="my-5">{{ user.nickname }}</h1>
-    <div>@{{ user.login_id }}</div>
+    <div class="text-muted my-3">@{{ user.login_id }}</div>
     <div>{{ user.profile.self_introduction }}</div>
-
     <div class="my-5">
         {% for post in posts %}
-            <div>
-                <div>{{ post.user.nickname }} @{{ post.user.login_id }} {{ post.created_at }}</div>
-                <div>{{ post.content }}</div>
+            <div class="row border rounded-1 my-1 py-2">
+                <div class="col"><i class="bi bi-person-circle"></i></div>
+                <div class="col-11 text-break">
+                    <div>{{ post.user.nickname }}<span class="text-muted ms-2">@{{ post.user.login_id }}</span><span class="text-muted ms-2">{{ post.created_at }}</span></div>
+                    <div>{{ post.content }}</div>
+                </div>
             </div>
         {% endfor %}
     </div>
