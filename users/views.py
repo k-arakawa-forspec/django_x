@@ -17,5 +17,5 @@ class UserView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['posts'] = Post.objects.filter(user=self.user).order_by('-id').select_related()
+        context['posts'] = self.user.posts.all().order_by('-id')
         return context
