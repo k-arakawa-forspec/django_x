@@ -15,5 +15,6 @@ class DetailView(DetailView):
     user = self.object
     # Userに紐づくPostのリスト
     post_list = user.post_set.all().order_by('-id')
+    # ログイン中のUserインスタンス
     context['post_list'] = post_list
     return context
