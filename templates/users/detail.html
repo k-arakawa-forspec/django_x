@@ -3,21 +3,26 @@
 
 {% block content %}
 <div class="container">
-        {# TODO: ログインユーザーが、本人以外の本ページへアクセスしたケース #}
-        {# TODO: ログインユーザーが、対象ユーザーをフォロー中のケース #}
-        <form action="{% url 'follows:remove' user.id %}" method="POST">
-            {% csrf_token %}
-            <div class="text-end">
-                <button class="btn btn-outline-primary" type="submit">フォロー中</button>
-            </div>
-        </form>
-        {# TODO: ログインユーザーが、対象ユーザーを未フォローのケース #}
-        <form action="{% url 'follows:add' user.id %}" method="POST">
-            {% csrf_token %}
-            <div class="text-end">
-                <button class="btn btn-primary" type="submit">フォロー</button>
-            </div>
-        </form>
+    {% if not is_me %}
+        {# ログインユーザーが、本人以外の本ページへアクセスしたケース #}
+        {% if is_followed %}
+            {# ログインユーザーが、対象ユーザーをフォロー中のケース #}
+            <form action="{% url 'follows:remove' user.id %}" method="POST">
+                {% csrf_token %}
+                <div class="text-end">
+                    <button class="btn btn-outline-primary" type="submit">フォロー中</button>
+                </div>
+            </form>
+        {% else %}
+            {# ログインユーザーが、対象ユーザーを未フォローのケース #}
+            <form action="{% url 'follows:add' user.id %}" method="POST">
+                {% csrf_token %}
+                <div class="text-end">
+                    <button class="btn btn-primary" type="submit">フォロー</button>
+                </div>
+            </form>
+        {% endif %}
+    {% endif %}
 
     <h1>
         {{ user.nickname  }}

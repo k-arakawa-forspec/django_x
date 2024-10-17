@@ -16,5 +16,8 @@ class DetailView(DetailView):
     # Userに紐づくPostのリスト
     post_list = user.post_set.all().order_by('-id')
     # ログイン中のUserインスタンス
+    logged_in_user = self.request.user
     context['post_list'] = post_list
+    context['is_followed'] = user in logged_in_user.follow_user_set.all()
+    context['is_me'] = logged_in_user == user
     return context
