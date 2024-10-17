@@ -12,6 +12,7 @@ class HomeView(DetailView):
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
-    post_list = Post.objects.filter(user=self.request.user).order_by("id").reverse()
+    post_user = User.objects.filter(login_id=self.kwargs.get('login_id')).first()
+    post_list = Post.objects.filter(user=post_user).order_by("id").reverse()
     context["post_list"] = post_list
     return context
