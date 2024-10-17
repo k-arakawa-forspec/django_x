@@ -4,21 +4,26 @@ from accounts.models import User
 
 
 # Create your views here.
-class AddView(RedirectView):
+class BaseView(RedirectView):
     pattern_name = 'users:detail'
+    logged_in_user = None
+    user = None
+
+    def setup(self, request, *args, **kwargs):
+        super().setup(request, *args, **kwargs)
+        self.logged_in_user = request.user
+        self.user = get_object_or_404(User, pk=kwargs['pk'])
+
+
+class AddView(BaseView):
 
     def get_redirect_url(self, *args, **kwargs):
-        from_user = self.request.user
-        to_user = get_object_or_404(User, pk=kwargs['pk'])
-        from_user.follow_user_set.add(to_user)
-        return super().get_redirect_url(login_id=to_user.login_id)
+        self.logged_in_user.follow_user_set.add(self.user)
+        return super().get_redirect_url(login_id=self.user.login_id)
 
 
-class RemoveView(RedirectView):
-    pattern_name = 'users:detail'
+class RemoveView(BaseView):
 
     def get_redirect_url(self, *args, **kwargs):
-        from_user = self.request.user
-        to_user = get_object_or_404(User, pk=kwargs['pk'])
-        from_user.follow_user_set.remove(to_user)
-        return super().get_redirect_url(login_id=to_user.login_id)
+        self.logged_in_user.follow_user_set.remove(self.user)
+        return super().get_redirect_url(login_id=self.user.login_id)
