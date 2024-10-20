@@ -3,6 +3,15 @@
 
 {% block content %}
 <div class="container">
+    <div class="text-end">
+        {% if user.pk != request.user.pk %}
+            {% if is_following %}
+            <a href="{% url 'follows:remove_follow' user.pk %}" class="btn btn-lg btn-primary">フォロー中</a>
+            {% else %}
+            <a href="{% url 'follows:add_follow' user.pk %}" class="btn btn-lg btn-primary">フォロー</a>
+            {% endif %}
+        {% endif %}
+    </div>
     <h1>
         {{ user.nickname  }}
     </h1>

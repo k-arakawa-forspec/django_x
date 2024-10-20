@@ -13,6 +13,13 @@ class User(AbstractUser):
 
   nickname = models.CharField(max_length=100)
 
+  follow_user_set = models.ManyToManyField(
+    'self',
+    db_table='follows',
+    symmetrical=False,
+    related_name='follower_user_set'
+  )
+
   USERNAME_FIELD = 'login_id'
   REQUIRED_FIELDS = ['nickname']
 
@@ -32,3 +39,7 @@ class User(AbstractUser):
     # INSERTされる場合のみ Profile も create する
     if adding:
       Profile.objects.create(user=self)
+
+  def is_following(self, follow_user_id):
+    return self.follow_user_set.all().filter(id=follow_user_id).exists()
+

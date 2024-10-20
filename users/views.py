@@ -15,5 +15,8 @@ class DetailView(DetailView):
     user = self.object
     # Userに紐づくPostのリスト
     post_list = user.post_set.all().order_by('-id')
+    # フォローしているか否か
+    is_following = self.request.user.is_following(user.pk)
     context['post_list'] = post_list
+    context['is_following'] = is_following
     return context
