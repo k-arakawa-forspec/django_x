@@ -18,6 +18,6 @@ class DetailView(DetailView):
     # ログイン中のUserインスタンス
     logged_in_user = self.request.user
     context['post_list'] = post_list
-    context['is_followed'] = logged_in_user.follow_user_set.filter(id=user.id)
+    context['is_followed'] = logged_in_user.follow_user_set.filter(id=user.id).count() == 1
     context['is_me'] = logged_in_user == user
     return context
