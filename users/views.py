@@ -10,10 +10,17 @@ class DetailView(DetailView):
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
+
     # URL中の login_id に紐づくUserインスタンス
     # (Detailviewの実装によって既に取得されている)
     user = self.object
+
     # Userに紐づくPostのリスト
     post_list = user.post_set.all().order_by('-id')
     context['post_list'] = post_list
+
+    # フォローしているか否か
+    followed = self.request.user.follow_user_set.filter(id=user.id).exists()
+    context['followed'] = followed
+
     return context
