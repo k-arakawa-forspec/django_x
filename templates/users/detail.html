@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{% block title %}ユーザ詳細{% endblock %}
+{% load humanize %}
+{% block title %}{{ user.nickname }} (@{{ user.login_id }}) さん{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -28,6 +29,22 @@
     <p>
         {{ user.profile.self_introduction|linebreaksbr }}
     </p>
+
+    <div>
+        <a href="{% url 'users:follows' login_id=user.login_id %}"
+        class="text-reset link-underline-dark link-underline-opacity-0 link-underline-opacity-75-hover">
+            <span class="fw-bolder">{{ follows_count | intcomma }}</span> フォロー中
+        </a>
+
+        <span class="ms-3"></span>
+
+        <a href="{% url 'users:followers' login_id=user.login_id %}"
+        class="text-reset link-underline-dark link-underline-opacity-0 link-underline-opacity-75-hover">
+            <span class="fw-bolder">{{ followers_count | intcomma }}</span> フォロワー
+        </a>
+    </div>
+
+    <div class="m-3"></div>
 
     <div>
         {% for post in post_list %}
