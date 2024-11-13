@@ -3,6 +3,21 @@
 
 {% block content %}
 <div class="container">
+    <div class="text-end">
+        {% if user != request.user %}
+            {% if is_following %}
+                <form action="{% url 'follows:toggle' 'remove' user.id %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-outline-primary">フォロー中</button>
+                </form>
+            {% else %}
+                <form action="{% url 'follows:toggle' 'add' user.id %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-primary">フォロー</button>
+                </form>
+            {% endif %}
+        {% endif %}
+    </div>
     <h1>
         {{ user.nickname  }}
     </h1>
