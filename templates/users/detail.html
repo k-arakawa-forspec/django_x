@@ -3,12 +3,35 @@
 
 {% block content %}
 <div class="container">
+
+    <!--フォロー及びフォロー解除のボタン-->
+    <div class="button_field">
+        <!--自分がフォローしているユーザーの場合の表示ボタン-->
+        {% if Other_user %}
+        <form action="{% url 'users:unfollow' login.pk %}" method="POST">
+            <button class="btn btn-dark">フォロー解除</button>
+        </form>
+        <!--自分がフォローしていないユーザーの場合の表示ボタン-->
+        {% else %}
+        <form action="{% url 'users:follow' login.pk %}" method="POST">
+            <button class="btn btn-light">フォロー</button>
+        </form>
+        {% endif %}
+    </div>
+
     <h1>
         {{ user.nickname  }}
     </h1>
     <p>
         <span class="opacity-50">@{{ user.login_id }}</span>
     </p>
+
+    <!-- <div class="follow_follower_count"> -->
+            <!--フォロー数を表示-->
+            <!-- <div>フォロー数：<h2>{{ following }}</h2></div> -->
+            <!--フォロワー数を表示-->
+            <!-- <div>フォロワー数：<h2>{{ follower }}</h2></div> -->
+    <!-- </div> -->
     <p>
         {{ user.profile.self_introduction|linebreaksbr }}
     </p>

@@ -16,4 +16,8 @@ class DetailView(DetailView):
     # Userに紐づくPostのリスト
     post_list = user.post_set.all().order_by('-id')
     context['post_list'] = post_list
+
+    Other_user = self.request.user.filter(id=user.pk)
+    context['Other_user'] = Other_user
+
     return context
