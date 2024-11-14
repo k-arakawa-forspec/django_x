@@ -7,6 +7,7 @@
     <!--フォロー及びフォロー解除のボタン-->
     <div class="button_field">
         <!--自分がフォローしているユーザーの場合の表示ボタン-->
+<<<<<<< HEAD
         {% if Other_user %}
         <form action="{% url 'users:unfollow' login.pk %}" method="POST">
             <button class="btn btn-dark">フォロー解除</button>
@@ -17,6 +18,22 @@
             <button class="btn btn-light">フォロー</button>
         </form>
         {% endif %}
+=======
+        {% if user.pk != request.user.pk %}
+            {% if Other_user %}
+            <form action="{% url 'users:unfollow' user.pk %}" method="POST">
+                {% csrf_token %}
+                <button class="btn btn-dark">フォロー解除</button>
+            </form>
+            <!--自分がフォローしていないユーザーの場合の表示ボタン-->
+            {% else %}
+            <form action="{% url 'users:follow' user.pk %}" method="POST">
+                {% csrf_token %}
+                <button class="btn btn-light">フォロー</button>
+            </form>
+            {% endif %}
+        {% endif %}            
+>>>>>>> cbdaedf (一部修正分)
     </div>
 
     <h1>
