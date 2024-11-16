@@ -9,6 +9,14 @@ class User(AbstractUser):
   # AbstractUser から継承される username を削除
   username = None
 
+  # 多対多のモデル設定
+  follow_users = models.ManyToManyField(
+    'self',
+    db_table='follows',
+    symmetrical=False,
+    related_name='follower_set_users'
+  )
+
   login_id = models.CharField(max_length=20, unique=True)
 
   nickname = models.CharField(max_length=100)
@@ -32,3 +40,6 @@ class User(AbstractUser):
     # INSERTされる場合のみ Profile も create する
     if adding:
       Profile.objects.create(user=self)
+
+  def is_following(self, follow_user_id):
+    return self.follow_users.all().filter(id=follow_user_id).exists()
