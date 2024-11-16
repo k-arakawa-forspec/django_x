@@ -6,9 +6,15 @@
     <div class="text-end">
         {% if user.pk != request.user.pk %}
             {% if is_following %}
-            <a href="{% url 'follows:remove_follow' user.pk %}" class="btn btn-lg btn-primary">フォロー中</a>
+            <form action="{% url 'follows:remove_follow' user.pk %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-lg btn-primary">フォロー中</button>
+            </form>
             {% else %}
-            <a href="{% url 'follows:add_follow' user.pk %}" class="btn btn-lg btn-primary">フォロー</a>
+            <form action="{% url 'follows:add_follow' user.pk %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-lg btn-primary">フォロー</button>
+            </form>
             {% endif %}
         {% endif %}
     </div>
