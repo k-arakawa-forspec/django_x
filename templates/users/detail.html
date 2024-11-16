@@ -2,6 +2,21 @@
 {% block title %}ユーザ詳細{% endblock %}
 
 {% block content %}
+<div class="d-flex flex-row-reverse">
+    {% if user.pk != request.user.pk %}
+        {% if is_following %}
+            <form action="{% url 'follows:remove' user.pk %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-sm btn-primary">フォロー中</button>
+            </form>
+        {% else %}
+            <form action="{% url 'follows:add' user.pk %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-sm btn-primary">フォロー</button>
+            </form>
+        {% endif %}
+    {% endif %}    
+</div>
 <div class="container">
     <h1>
         {{ user.nickname  }}
