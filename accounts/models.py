@@ -41,5 +41,5 @@ class User(AbstractUser):
       Profile.objects.create(user=self)
 
   def is_following(self, follow_user_id):
-    return self.follow_user_set.all().filter(id=follow_user_id).exists()
+    return self.follow_user_set.filter(id=follow_user_id).exists()
 
