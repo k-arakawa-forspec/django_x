@@ -40,7 +40,7 @@ class FollowsView(BaseUserView):
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
-    context['follows'] = self.object.follow_user_set.all()
+    context['follows'] = self.object.follow_user_set.all().select_related('profile')
     return context
 
 
@@ -49,5 +49,5 @@ class FollowersView(BaseUserView):
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
-    context['followers'] = self.object.follower_user_set.all()
+    context['followers'] = self.object.follower_user_set.all().select_related('profile')
     return context
