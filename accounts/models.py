@@ -16,6 +16,13 @@ class User(AbstractUser):
   USERNAME_FIELD = 'login_id'
   REQUIRED_FIELDS = ['nickname']
 
+  follow_users = models.ManyToManyField(
+    'self',
+    db_table='follows',
+    symmetrical=False,
+    related_name='follower_users'
+  )
+
   def save(self, *args, **kwargs):
     # https://docs.djangoproject.com/ja/5.0/ref/models/instances/#state
     adding = self._state.adding
@@ -32,3 +39,7 @@ class User(AbstractUser):
     # INSERTされる場合のみ Profile も create する
     if adding:
       Profile.objects.create(user=self)
+      
+   def is_following(self, follow_user_id):
+    return self.follow_users.all().filter(id=follow_user_id).exists()
+    
