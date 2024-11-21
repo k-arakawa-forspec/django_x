@@ -1,8 +1,8 @@
-from django.views.generic.detail import DetailView
+from django.views.generic.detail import DetailView as GenericDetailView
 from accounts.models import User
 
 # Create your views here.
-class DetailView(DetailView):
+class DetailView(GenericDetailView):
   model = User
   template_name = "users/detail.html"
   slug_url_kwarg = "login_id"
@@ -28,7 +28,7 @@ class DetailView(DetailView):
 
     return context
 
-class FollowsView(DetailView):
+class FollowsView(GenericDetailView):
   model = User
   template_name = "users/follows.html"
   slug_url_kwarg = "login_id"
@@ -49,7 +49,7 @@ class FollowsView(DetailView):
 
     return context
 
-class FollowersView(DetailView):
+class FollowersView(GenericDetailView):
   model = User
   template_name = "users/followers.html"
   slug_url_kwarg = "login_id"
