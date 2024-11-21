@@ -2,11 +2,14 @@ from django.views.generic.detail import DetailView
 from accounts.models import User
 
 # Create your views here.
-class DetailView(DetailView):
+class BaseUserView(DetailView):
   model = User
-  template_name = "users/detail.html"
   slug_url_kwarg = "login_id"
   slug_field = "login_id"
+
+
+class DetailView(BaseUserView):
+  template_name = "users/detail.html"
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
@@ -32,11 +35,8 @@ class DetailView(DetailView):
     return context
 
 
-class FollowsView(DetailView):
-  model = User
+class FollowsView(BaseUserView):
   template_name = "users/follows.html"
-  slug_url_kwarg = "login_id"
-  slug_field = "login_id"
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
@@ -44,11 +44,8 @@ class FollowsView(DetailView):
     return context
 
 
-class FollowersView(DetailView):
-  model = User
+class FollowersView(BaseUserView):
   template_name = "users/followers.html"
-  slug_url_kwarg = "login_id"
-  slug_field = "login_id"
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
