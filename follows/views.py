@@ -1,37 +1,23 @@
 from django.shortcuts import redirect
-from django.urls.base import reverse
-from django.views.generic import DetailView
-from django.urls import reverse_lazy
-from django.http import HttpResponseRedirect
+from django.views.generic import RedirectView
+from django.shortcuts import get_object_or_404
 
-from posts.models import Post
-
-class FollowFollowerView(DetailView):
-    pattern_name = 'users:detail'
-<<<<<<< HEAD
-    model = User
-    pk_url_kwarg = "login_id"
-
- 
-    # フォロー機能
-    def follow_view(request, *args, **kwargs):
-        return 
-
-    # フォロー解除
-    def unfollow_view(request, *args, **kwargs):
-        return 
-=======
-    pk_url_kwarg = "user"
+class addView(RedirectView):
+    pattern_name = "users:detail"
 
     # フォロー機能
-    def follow_view(request, user):
-        follow_user = User.objects.get(id=user)
-        request.user.follow_user_set.add(follow_user.pk)
+    def follow_view(self, *args, **kwargs):
+        to_user = get_object_or_404(User, pk=kwargs["user_id"]);
+        follow_user = self.request.user
+        request.follow_user_set.add(follow_user)
         return redirect('users:detail', login_id=follow_user.login_id)
+        
+class removeView(RedirectView):
+    pattern_name = "users:detail"
 
     # フォロー解除
-    def unfollow_view(request, user):
-        follow_user = User.objects.get(id=user)
-        request.user.follow_user_set.remove(follow_user.pk)
+    def unfollow_view(self, *args, **kwargs):
+        to_user = get_object_or_404(User, pk=kwargs["user_id"]);
+        from_user = self.request.user
+        request.follow_user_set.remove(follow_user)
         return redirect('users:detail', login_id=follow_user.login_id)
->>>>>>> cbdaedf (一部修正分)

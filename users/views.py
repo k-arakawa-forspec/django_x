@@ -17,11 +17,7 @@ class DetailView(DetailView):
     post_list = user.post_set.all().order_by('-id')
     context['post_list'] = post_list
 
-<<<<<<< HEAD
-    Other_user = self.request.user.filter(id=user.pk)
-=======
-    Other_user = self.request.user.Other_user(user.pk)
->>>>>>> cbdaedf (一部修正分)
+    Other_user = self.request.user.follow_user_set(id=user.id).exists()
     context['Other_user'] = Other_user
 
     return context

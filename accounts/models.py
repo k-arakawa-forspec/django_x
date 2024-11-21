@@ -42,5 +42,4 @@ class User(AbstractUser):
     if adding:
       Profile.objects.create(user=self)
 
-  def Other_user(self, follow_user_id):
-    return self.follow_user_set.filter(id=follow_user_id).exists()
+
