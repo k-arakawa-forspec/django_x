@@ -23,4 +23,10 @@ class DetailView(DetailView):
     followed = self.request.user.follow_user_set.filter(id=user.id).exists()
     context['followed'] = followed
 
+    # フォロー数
+    context['follow_count'] = user.follow_user_set.all().count()
+
+    # フォロワー数
+    context['follower_count'] = user.follower_user_set.all().count()
+
     return context
