@@ -42,3 +42,15 @@ class FollowsView(DetailView):
     context = super().get_context_data(**kwargs)
     context['follows'] = self.object.follow_user_set.all()
     return context
+
+
+class FollowersView(DetailView):
+  model = User
+  template_name = "users/followers.html"
+  slug_url_kwarg = "login_id"
+  slug_field = "login_id"
+
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    context['followers'] = self.object.follower_user_set.all()
+    return context

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}フォロワー一覧{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>
+        <a href="{% url 'users:detail' login_id=user.login_id %}" class="link-dark link-underline link-underline-opacity-0">
+            {{ user.nickname }}
+        </a>
+    </h1>
+    <p class="opacity-50">@{{ user.login_id }}</p>
+
+    <h2>フォロワー</h2>
+    <div>
+        {% for user in followers %}
+            <div class="row border rounded p-1 my-1">
+                <div class="col-1"><i class="bi bi-person-circle"></i></div>
+                <div class="col">
+                    <div>
+                        <span class="fw-bolder">
+                            <a href="{% url 'users:detail' login_id=user.login_id %}" class="link-dark link-underline link-underline-opacity-0">
+                                {{ user.nickname }}
+                            </a>
+                        </span>
+                    </div>
+                    <div><span class="opacity-50">@{{ user.login_id }}</span></div>
+                    <div>{{ user.profile.self_introduction | linebreaksbr }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
