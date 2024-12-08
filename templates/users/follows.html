@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}{{ user.nickname }} (@{{ user.login_id }}) さんがフォローしているアカウント{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>
+        {{ user.nickname  }}
+    </h1>
+    <p>
+        <span class="opacity-50">@{{ user.login_id }}</span>
+    </p>
+
+    <h2>フォロー中</h2>
+
+    <div class="m-3"></div>
+
+    <div>
+        {% for follow_user in follow_user_set %}
+            {% include "users/partials/user.html" with user=follow_user %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+<div class="row border p-1" style="position: relative;">
+    <div class="col-1">
+        <i class="bi bi-person-circle"></i>
+    </div>
+    <div class="col">
+        <div>
+            <a href="{% url 'users:detail' login_id=user.login_id %}"
+            class="stretched-link fw-bolder text-reset link-underline-dark link-underline-opacity-0 link-underline-opacity-75-hover">
+                {{ user.nickname }}
+            </a>
+        </div>
+        <div>
+            <span class="opacity-50">@{{ user.login_id }}</span>
+        </div>
+        <div>
+            {{ user.profile.self_introduction }}
+        </div>
+    </div>
+</div>
