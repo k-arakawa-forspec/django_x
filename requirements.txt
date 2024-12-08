@@ -10,3 +10,5 @@ typing_extensions==4.9.0
 
 django-glrm
 django-widget-tweaks
+
+Pillow
