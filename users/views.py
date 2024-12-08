@@ -38,7 +38,7 @@ class DetailView(DetailView):
     return context
 
   def unit_format(self, count):
-    if count < 1000:
+    if count < self.UNIT_LIST[0]["num"]:
       return count
 
     # 1000以上は単位変換
