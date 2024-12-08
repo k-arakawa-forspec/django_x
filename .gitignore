@@ -167,3 +167,4 @@ cython_debug/
 .vscode/
 
 /*.sqlite3
+/medias
