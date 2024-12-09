@@ -1,6 +1,6 @@
 {% extends "base.html" %}
+{% load custom_tags %}
 {% block title %}ユーザ詳細{% endblock %}
-
 {% block content %}
 <div class="container">
     <div class="text-end">
@@ -32,13 +32,13 @@
         <span>
             <a href="{% url 'users:follows' login_id=user.login_id %}"
                class="link-dark link-offset-2 link-offset-3-hover link-underline-dark link-underline-opacity-0 link-underline-opacity-100-hover">
-                {{ follow_count }}フォロー中
+                {{ follow_count | unit_filter }}フォロー中
             </a>
         </span>
         <span class="ms-2">
             <a href="{% url 'users:followers' login_id=user.login_id %}" 
                class="link-dark link-offset-2 link-offset-3-hover link-underline-dark link-underline-opacity-0 link-underline-opacity-100-hover">
-                {{ follower_count }}フォロワー
+                {{ follower_count | unit_filter }}フォロワー
             </a>
         </span>
     </div>
