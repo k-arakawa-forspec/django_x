@@ -24,10 +24,10 @@ class UsersView(DetailView):
     context['followed'] = followed
 
     # フォロー数取得
-    context['follow_count'] = user.follow_user_set.all().count()
+    context['follow_count'] = user.follow_user_set.count()
 
     # フォロワー数取得
-    context['follower_count'] = user.follower_user_set.all().count()
+    context['follower_count'] = user.follower_user_set.count()
 
     return context
 
