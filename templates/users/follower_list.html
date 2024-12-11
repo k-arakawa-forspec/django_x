@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ user.username }} - フォロワー</title>
+</head>
+<body>
+    <div class="profile-header">
+        <h1>{{ user.username }}</h1>
+        <p>@{{ user.username }}</p>
+        <h2>フォロワー</h2>
+    </div>
+    <ul class="follower-list">
+        {% for follower in followers %}
+            <li>
+                {% include 'users/partials/user.html' with user=follower %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

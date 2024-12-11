@@ -23,4 +23,24 @@ class DetailView(DetailView):
     followed = self.request.user.follow_user_set.filter(id=user.id).exists()
     context['followed'] = followed
 
+    user = get_object_or_404(User, username=login_id)
+    follow_count = user.following.count()
+    follower_count = user.followers.count()
+
     return context
+
+  def follower_list(request, login_id):
+    user = get_object_or_404(User, username=login_id)
+    followers = user.followers.all()
+    return render(request, 'users/follower_list.html', {
+        'user': user,
+        'followers': followers,
+    })
+
+  def follow_list(request, login_id):
+    user = get_object_or_404(User, username=login_id)
+    follows = user.following.all()
+    return render(request, 'users/follow_list.html', {
+        'user': user,
+        'follows': follows,
+    })

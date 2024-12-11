@@ -29,6 +29,15 @@
         {{ user.profile.self_introduction|linebreaksbr }}
     </p>
 
+    <div class="follow-info">
+        <a href="{% url 'follow_list' login_id=user.username %}">
+            {{ follow_count }} フォロー中
+        </a>
+        <a href="{% url 'follower_list' login_id=user.username %}">
+            {{ follower_count }} フォロワー
+        </a>
+    </div>
+
     <div>
         {% for post in post_list %}
             {% include "posts/partials/post.html" %}
