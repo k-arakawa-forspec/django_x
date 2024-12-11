@@ -28,13 +28,9 @@
     <p>
         {{ user.profile.self_introduction|linebreaksbr }}
     </p>
-
-    <!-- フォロー/フォロワー数表示 -->
-    <div class="follow_follower_count">
-               <!--フォロー数を表示-->
-               <h6>{{ user.following }}<p>フォロー中</p></h6>
-                <!--フォロワー数を表示-->
-                <h6>{{ user.follower }}<p>フォロワー</p></h6>
+    <div>
+        <p>{{ following }}フォロー中</p>
+        <p>{{ follower }}フォロワー</p>
     </div>
 
     <div>
