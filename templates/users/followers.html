@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}フォロワー一覧{% endblock %}
+
+{% block content %}
+<div class="container">
+    <p>{{ follower }}</p>
+    <h2>フォロワー</h2>
+    <div>
+        {% for user in followers %}
+            {% include "users/partials/user.html" %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

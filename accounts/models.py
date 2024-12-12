@@ -32,3 +32,10 @@ class User(AbstractUser):
     # INSERTされる場合のみ Profile も create する
     if adding:
       Profile.objects.create(user=self)
+<<<<<<< Updated upstream
+=======
+      
+  def is_following(self, follow_user_id):
+    return self.follow_users.all().filter(id=follow_user_id).exists()
+    
+>>>>>>> Stashed changes
