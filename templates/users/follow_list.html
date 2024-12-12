@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}フォロー中{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>
+        {{ profile_user.nickname  }}
+    </h1>
+    <p>
+        <span class="opacity-50">@{{ profile_user.login_id }}</span>
+    </p>
+    <div>
+        {% for follow in follow_list %}
+            <div class="row border p-1">
+                <div class="col-1">
+                    <i class="bi bi-person-circle"></i>
+                </div>
+                <div class="col">
+                    <div class="row fw-bolder">
+                        {{ follow.nickname }}
+                    </div>
+                    <div class="row opacity-50">
+                        @{{ follow.login_id }}
+                    </div>
+                    <div class="row">
+                        {{ follow.profile.self_introduction|linebreaksbr }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
