@@ -8,7 +8,7 @@
             {% if followed %}
                 <form action="{% url 'follows:remove' user_id=user.pk %}" method="POST">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-outline-primary">フォロー</button>
+                    <button type="submit" class="btn btn-outline-primary">フォロー中</button>
                 </form>
             {% else %}
                 <form action="{% url 'follows:add' user_id=user.pk %}" method="POST">
@@ -32,9 +32,9 @@
     <!-- フォロー/フォロワー数表示 -->
     <div class="follow_follower_count">
                <!--フォロー数を表示-->
-               <h6>{{ user.following }}<p>フォロー中</p></h6>
+               <h6><p>{{ following }}フォロー中</p></h6>
                 <!--フォロワー数を表示-->
-                <h6>{{ user.follower }}<p>フォロワー</p></h6>
+                <h6><p>{{ follower }}フォロワー</p></h6>
     </div>
 
     <div>

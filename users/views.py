@@ -31,19 +31,19 @@ class ProifileDetail(DetailView):
     return context
 
 
-class followingView(DetailView):
+class FollowingView(DetailView):
   template_name = "users/following.html"
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
-    context['following'] = self.object.follow_user_set.all().select_related('profile')
+    context['following'] = self.request.user.follow_user_set.all().select_related('profile')
     return context
 
 
-class followersView(DetailView):
+class FollowersView(DetailView):
   template_name = "users/followers.html"
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
-    context['follower'] = self.object.follower_user_set.all().select_related('profile')
+    context['follower'] = self.request.user.follower_user_set.all().select_related('profile')
     return context

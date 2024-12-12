@@ -3,8 +3,7 @@
 
 {% block content %}
 <div class="container">
-    <p>{{ follower }}</p>
-    <h2>フォロワー</h2>
+    <h2><p>{{ follower }}</p>フォロワー</h2>
     <div>
         {% for user in followers %}
             {% include "users/partials/user.html" %}
