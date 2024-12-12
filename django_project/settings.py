@@ -195,3 +195,6 @@ LOGGING = {
         },
     },
 }
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'medias')
+MEDIA_URL = 'medias/'
