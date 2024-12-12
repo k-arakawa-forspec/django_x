@@ -23,4 +23,36 @@ class DetailView(DetailView):
     followed = self.request.user.follow_user_set.filter(id=user.id).exists()
     context['followed'] = followed
 
+    # フォロー数のカウント
+    context['follow_count'] = user.follow_user_set.count()
+
+    # フォロワー数のカウント
+    context['follower_count'] = user.follower_user_set.count()
+
+    return context
+
+class FollowListView(ListView):
+  model = User
+  template_name = "users/follow_list.html"
+
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    login_id = self.kwargs.get('login_id')
+    user = User.objects.get(login_id=login_id)
+
+    context['profile_user'] = user
+    context['follows'] = user.follow_user_set.select_related('profile')
+    return context
+
+class FollowerListView(ListView):
+  model = User
+  template_name = "users/follower_list.html"
+
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    login_id = self.kwargs.get('login_id')
+    user = User.objects.get(login_id=login_id)
+    
+    context['profile_user'] = user
+    context['follower'] = user.follower_user_set.select_related('profile')
     return context
