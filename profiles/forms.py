@@ -7,7 +7,10 @@ class ProfileForm(ModelForm):
 
   class Meta:
     model = Profile
-    fields = ('self_introduction', )
+    fields = (
+      'image',
+      'self_introduction',
+    )
     widgets = {
       'self_introduction': forms.Textarea(),
     }

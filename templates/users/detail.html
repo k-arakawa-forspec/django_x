@@ -1,23 +1,33 @@
 {% extends "base.html" %}
 {% load humanize %}
+{% load static %}
 {% block title %}{{ user.nickname }} (@{{ user.login_id }}) さん{% endblock %}
 
 {% block content %}
 <div class="container">
-    <div class="text-end">
-        {% if user != request.user %}
-            {% if followed %}
-                <form action="{% url 'follows:remove' user_id=user.pk %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-outline-primary">フォロー中</button>
-                </form>
+    <div class="row">
+        <div class="col-3">
+            {% if user.profile.image %}
+                <img src="{{ user.profile.image.url }}" class="img-fluid rounded-circle img-thumbnail border-0">
             {% else %}
-                <form action="{% url 'follows:add' user_id=user.pk %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-primary">フォロー</button>
-                </form>
+                <img src="{% static 'image/default/users/profile.svg' %}" class="img-fluid rounded-circle img-thumbnail border-0" style="width: 100%;">
             {% endif %}
-        {% endif %}
+        </div>
+        <div class="col text-end">
+            {% if user != request.user %}
+                {% if followed %}
+                    <form action="{% url 'follows:remove' user_id=user.pk %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-primary">フォロー中</button>
+                    </form>
+                {% else %}
+                    <form action="{% url 'follows:add' user_id=user.pk %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">フォロー</button>
+                    </form>
+                {% endif %}
+            {% endif %}
+        </div>
     </div>
 
     <h1>
