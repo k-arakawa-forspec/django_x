@@ -159,16 +159,39 @@ PUBLIC_VIEWS = ['accounts.views.LoginView', 'accounts.views.SignUpView']
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'debug': {
+            'format': '[%(levelname)s] %(message)s - %(pathname)s:%(lineno)d'
+        },
+    },
     'handlers': {
         'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
         },
+        # デバッグ出力用
+        'debug': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'debug',
+        },
+        # 非出力
+        'none': {
+            'level': 'CRITICAL',
+            'class': 'logging.NullHandler',
+        },
     },
     'loggers': {
+        '': {
+            'handlers': ['debug'],
+            'level': 'DEBUG',
+        },
         'django.db.backends': {
+            # Queryログが邪魔な場合は none に切替
+#            'handlers': ['none'],
             'handlers': ['console'],
             'level': 'DEBUG',
+            'propagate': False,
         },
     },
 }
