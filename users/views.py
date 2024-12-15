@@ -30,3 +30,25 @@ class DetailView(DetailView):
     context['follower_count'] = user.follower_user_set.count()
 
     return context
+
+class FollowListView(DetailView):
+  model = User
+  template_name = "users/followList.html"
+  slug_url_kwarg = "login_id"
+  slug_field = "login_id"
+  context_object_name = "user"
+
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    return context
+
+class FollowerListView(DetailView):
+  model = User
+  template_name = "users/followerList.html"
+  slug_url_kwarg = "login_id"
+  slug_field = "login_id"
+  context_object_name = "user"
+
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    return context

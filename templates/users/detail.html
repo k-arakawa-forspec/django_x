@@ -30,12 +30,12 @@
     </p>
     <div class="d-flex">
         <span class="col-3">
-            <a href="" class="link-dark">
+            <a href="{% url 'users:followList' login_id=user.login_id %}" class="link-dark">
                 {{ follow_count }}フォロー中
             </a>
         </span>
         <span class="col-3">
-            <a href="" class="link-dark">
+            <a href="{% url 'users:followerList' login_id=user.login_id %}" class="link-dark">
                 {{ follower_count }}フォロワー
             </a>
         </span>
