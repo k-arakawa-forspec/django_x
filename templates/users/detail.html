@@ -28,7 +28,18 @@
     <p>
         {{ user.profile.self_introduction|linebreaksbr }}
     </p>
-
+    <div class="d-flex">
+        <span class="col-3">
+            <a href="" class="link-dark">
+                {{ follow_count }}フォロー中
+            </a>
+        </span>
+        <span class="col-3">
+            <a href="" class="link-dark">
+                {{ follower_count }}フォロワー
+            </a>
+        </span>
+    </div>
     <div>
         {% for post in post_list %}
             {% include "posts/partials/post.html" %}
