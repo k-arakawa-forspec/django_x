@@ -23,6 +23,13 @@ class User(AbstractUser):
     related_name='follower_user_set'
   )
 
+  profile_picture = models.ImageField(upload_to='profile_pictures/', default='default_profile.png')
+  
+  bio = models.TextField(blank=True, default="")
+  
+  following = models.ManyToManyField('self', symmetrical=False, related_name='followers')
+
+
   def save(self, *args, **kwargs):
     # https://docs.djangoproject.com/ja/5.0/ref/models/instances/#state
     adding = self._state.adding
