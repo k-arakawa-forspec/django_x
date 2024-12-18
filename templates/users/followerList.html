@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}フォロー一覧{% endblock %}
+{% block title %}フォローワー一覧{% endblock %}
 {% block content %}
 
 <div class="container">
@@ -10,7 +10,7 @@
 
     <h2 class="fw-bolder">フォロー中</h2>
     <div>
-        {% for user in follow_list %}
+        {% for user in follower_list %}
             {% include "users/partials/user.html" %}
         {% endfor %}
     </div>

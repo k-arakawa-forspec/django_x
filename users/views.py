@@ -40,6 +40,7 @@ class FollowListView(DetailView):
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
+    context['follow_list'] = self.object.follow_user_set.select_related('profile')
     return context
 
 class FollowerListView(DetailView):
@@ -51,4 +52,5 @@ class FollowerListView(DetailView):
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
+    context['follower_list'] = self.object.follower_user_set.select_related('profile')
     return context

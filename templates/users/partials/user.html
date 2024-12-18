@@ -1,0 +1,16 @@
+<div class="row border p-1">
+    <div class="col-1">
+        <i class="bi bi-person-circle"></i>
+    </div>
+    <div class="col">
+        <div class="row">
+            {{ user.nickname }}
+        </div>
+        <div class="row">
+            <div class="text-black-50 p-0">@{{ user.login_id }}</div>
+        </div>
+    </div>
+    <div>
+        {{ user.profile.self_introduction|linebreaksbr }}
+    </div>
+</div>
