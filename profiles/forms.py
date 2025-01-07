@@ -7,7 +7,8 @@ class ProfileForm(ModelForm):
 
   class Meta:
     model = Profile
-    fields = ('self_introduction', )
+    fields = ('self_introduction', 'image')
     widgets = {
       'self_introduction': forms.Textarea(),
+      'image': forms.ClearableFileInput(),
     }

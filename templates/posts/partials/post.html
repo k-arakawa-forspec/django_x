@@ -1,6 +1,10 @@
 <div class="row border p-1">
     <div class="col-1">
-        <i class="bi bi-person-circle"></i>
+        {% if user.profile.image != null %}
+            <img src="{{ user.profile.image.url }}" class="rounded-circle" style="max-width: 100%; height: auto;"/>
+        {% else %}
+            <i class="bi bi-person-circle" style="font-size: 10px;"></i>
+        {% endif %}
     </div>
     <div class="col">
         <div>

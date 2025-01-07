@@ -2,6 +2,13 @@
 {% block title %}{{ user.nickname }} (@{{ user.login_id }}) さんがフォローしているアカウント{% endblock %}
 
 {% block content %}
+
+{% if user.profile.image != null %}
+    <img src="{{ user.profile.image.url }}" class="rounded-circle" width="200" height="200"/>
+{% else %}
+    <i class="bi bi-person-circle" style="font-size: 200px;"></i>
+{% endif %}
+
 <div class="container">
     <h1>
         {{ user.nickname  }}
