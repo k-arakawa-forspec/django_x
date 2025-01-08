@@ -19,7 +19,7 @@ class DetailView(GenericDetailView):
     user = self.object
 
     # Userに紐づくPostのリスト
-    post_list = user.post_set.filter(id=user.id).exists()
+    post_list = user.post_set.all().order_by('-id')
     context['post_list'] = post_list
 
     # フォローしているか否か
