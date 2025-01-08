@@ -5,6 +5,19 @@
 {% block content %}
 <div class="container">
     <div class="text-end">
+        <!-- プロフィール画像 --> 
+        <div>
+            <picture>
+                <!-- ユーザがプロフィール画像を設定している場合-->
+                {% if user.image != null %}
+                    <img class="rounded float-start" src="{{ user.image.url }}" 
+                    width="30" height="24"> 
+                <!-- ユーザがプロフィール画像を設定していない場合-->
+                {% else %}
+                    <img class="rounded float-start" alt="image_thumbnail" width="30" height="24">
+                {% endif %}
+            </picture>
+        </div>
         {% if user != request.user %}
             {% if followed %}
                 <form action="{% url 'follows:remove' user_id=user.pk %}" method="POST">

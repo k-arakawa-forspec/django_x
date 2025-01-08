@@ -3,26 +3,6 @@
         <i class="bi bi-person-circle"></i>
     </div>
     <div class="col">
-        <!-- プロフィール画像 --> 
-        <!--構文 <img src="画像のURL" alt="代替テキスト"> -->
-        <!-- 装飾等の意味の無い画像にも必ずalt属性は必要-->
-        <!-- https://cdg-blog.jp/html_img_alt/-->
-        <div>
-            <picture>
-            <!--{% for picture in profile_picture %}-->
-                <!-- ユーザがプロフィール画像を設定している場合-->
-                {% if picture.image %}
-                <a class="navbar-brand" href="#"></a>
-                    <img class="rounded float-start" src="{{ user.image.url }}" 
-                    alt="image_thumbnail" width="30" height="24"> 
-                <!-- ユーザがプロフィール画像を設定していない場合-->
-                {% else %}
-                <a class="navbar-brand" href="#"></a>
-                    <img class="rounded float-start" alt="image_thumbnail" width="30" height="24">
-                {% endif %}
-            <!--{% endfor%}-->
-            </picture>
-        </div>
         <div>
             <a href="{% url 'users:detail' login_id=user.login_id %}"
             class="stretched-link fw-bolder text-reset link-underline-dark link-underline-opacity-0 link-underline-opacity-75-hover">
