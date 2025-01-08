@@ -1,6 +1,9 @@
 from django.views.generic.detail import DetailView as GenericDetailView
 from accounts.models import User
 
+import logging
+logger = logging.getLogger()
+
 # Create your views here.
 class DetailView(GenericDetailView):
   model = User
@@ -16,7 +19,7 @@ class DetailView(GenericDetailView):
     user = self.object
 
     # Userに紐づくPostのリスト
-    post_list = user.post_set.all().order_by('-id')
+    post_list = user.post_set.filter(id=user.id).exists()
     context['post_list'] = post_list
 
     # フォローしているか否か
@@ -26,6 +29,10 @@ class DetailView(GenericDetailView):
     context['follows_count'] = user.follow_user_set.count()
     context['followers_count'] = user.follower_user_set.count()
 
+    #プロフィール画像
+    #profile_picture = user.image()
+    #context['profile_picture'] = profile_picture
+    
     return context
 
 class FollowsView(GenericDetailView):
