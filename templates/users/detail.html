@@ -4,47 +4,46 @@
 
 {% block content %}
 <div class="container">
-    <div class="text-end">
-        {% if user != request.user %}
-            {% if followed %}
-                <form action="{% url 'follows:remove' user_id=user.pk %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-outline-primary">フォロー中</button>
-                </form>
-            {% else %}
-                <form action="{% url 'follows:add' user_id=user.pk %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-primary">フォロー</button>
-                </form>
+    <div class="row">
+        <div class="col-md-3 text-center">
+            <img src="{{ profile_image }}" alt="プロフィール画像" class="img-fluid rounded-circle mb-3">
+            {% if user != request.user %}
+                {% if followed %}
+                    <form action="{% url 'follows:remove' user_id=user.pk %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-primary">フォロー中</button>
+                    </form>
+                {% else %}
+                    <form action="{% url 'follows:add' user_id=user.pk %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">フォロー</button>
+                    </form>
+                {% endif %}
             {% endif %}
-        {% endif %}
+        </div>
+
+        <div class="col-md-9">
+            <h1>{{ user.nickname }}</h1>
+            <p><span class="opacity-50">@{{ user.login_id }}</span></p>
+            <p>{{ user.profile.self_introduction|linebreaksbr }}</p>
+
+            <div>
+                <a href="{% url 'users:follows' login_id=user.login_id %}"
+                   class="text-reset link-underline-dark link-underline-opacity-0 link-underline-opacity-75-hover">
+                    <span class="fw-bolder">{{ follows_count | intcomma }}</span> フォロー中
+                </a>
+
+                <span class="ms-3"></span>
+
+                <a href="{% url 'users:followers' login_id=user.login_id %}"
+                   class="text-reset link-underline-dark link-underline-opacity-0 link-underline-opacity-75-hover">
+                    <span class="fw-bolder">{{ followers_count | intcomma }}</span> フォロワー
+                </a>
+            </div>
+        </div>
     </div>
 
-    <h1>
-        {{ user.nickname  }}
-    </h1>
-    <p>
-        <span class="opacity-50">@{{ user.login_id }}</span>
-    </p>
-    <p>
-        {{ user.profile.self_introduction|linebreaksbr }}
-    </p>
-
-    <div>
-        <a href="{% url 'users:follows' login_id=user.login_id %}"
-        class="text-reset link-underline-dark link-underline-opacity-0 link-underline-opacity-75-hover">
-            <span class="fw-bolder">{{ follows_count | intcomma }}</span> フォロー中
-        </a>
-
-        <span class="ms-3"></span>
-
-        <a href="{% url 'users:followers' login_id=user.login_id %}"
-        class="text-reset link-underline-dark link-underline-opacity-0 link-underline-opacity-75-hover">
-            <span class="fw-bolder">{{ followers_count | intcomma }}</span> フォロワー
-        </a>
-    </div>
-
-    <div class="m-3"></div>
+    <div class="m-4"></div>
 
     <div>
         {% for post in post_list %}

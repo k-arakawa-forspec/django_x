@@ -6,10 +6,10 @@
 <div class="container">
     <h1>{{ profile.user.nickname }} さんのプロフィール</h1>
 
-    {# classを指定するためだけにテンプレートタグではなくHTMLタグを使用するのは避けたいのだが... #}
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.non_field_errors }}
+
         {% for field in form %}
             {{ field|add_label_class:"form-label" }}
             <br>
@@ -17,6 +17,14 @@
             <br>
             {{ field.errors }}
         {% endfor %}
+
+        {% if profile.image %}
+            <br>
+            <h5>現在のプロフィール画像</h5>
+            <img src="{{ profile.image.url }}" alt="プロフィール画像" class="img-thumbnail" width="150">
+            <br>
+        {% endif %}
+
         <br>
         <button type="submit" class="btn btn-lg btn-primary">更新</button>
     </form>
