@@ -1,7 +1,9 @@
 from django.db import models
+import os
 
 def user_profile_image_path(instance, filename):
-  return filename
+  basename, ext = os.path.splitext(filename)
+  return 'users/{0}/profile{1}'.format(instance.user.id, ext)
 
 # Create your models here.
 class Profile(models.Model):

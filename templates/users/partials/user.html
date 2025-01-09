@@ -1,6 +1,12 @@
+{% load static %}
+
 <div class="row border p-1" style="position: relative;">
     <div class="col-1">
-        <i class="bi bi-person-circle"></i>
+        {% if user.profile.image %}
+            <img src="{{ user.profile.image.url }}" class="img-fluid rounded-circle">
+        {% else %}
+            <img src="{% static 'image/default/users/profile.svg' %}" class="img-fluid rounded-circle" style="width: 100%;">
+        {% endif %}
     </div>
     <div class="col">
         <div>

@@ -1,8 +1,19 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}{{ user.nickname }} (@{{ user.login_id }}) さんをフォローしているアカウント{% endblock %}
 
 {% block content %}
 <div class="container">
+    <div class="row">
+        <div class="col-3">
+            {% if user.profile.image %}
+                <img src="{{ user.profile.image.url }}" class="img-fluid rounded-circle img-thumbnail border-0">
+            {% else %}
+                <img src="{% static 'image/default/users/profile.svg' %}" class="img-fluid rounded-circle img-thumbnail border-0" style="width: 100%;">
+            {% endif %}
+        </div>
+    </div>
+
     <h1>
         {{ user.nickname  }}
     </h1>
