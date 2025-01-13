@@ -7,7 +7,7 @@
     <h1>{{ profile.user.nickname }} さんのプロフィール</h1>
 
     {# classを指定するためだけにテンプレートタグではなくHTMLタグを使用するのは避けたいのだが... #}
-    <form method="post">
+    <form enctype="multipart/form-data" method="post">
         {% csrf_token %}
         {{ form.non_field_errors }}
         {% for field in form %}
