@@ -1,0 +1,7 @@
+{% load static %}
+
+{% if user.profile.image %}
+    <img class="w-100 rounded-circle" src="{{ user.profile.image.url }}" />
+{% else %}
+    <img class="w-100" src="{% static 'image/person-circle.svg' %}" />
+{% endif %}
