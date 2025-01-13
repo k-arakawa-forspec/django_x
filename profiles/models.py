@@ -1,7 +1,8 @@
+from os.path import splitext
 from django.db import models
 
 def user_profile_image_path(instance, filename):
-  return filename
+  return f'users/{str(instance.user_id)}/profile{splitext(filename)[1]}'
 
 # Create your models here.
 class Profile(models.Model):
