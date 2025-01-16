@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>Settings</h1>
+  <hr />
+  <div class="list-group">
+    <a href="{% url 'profiles:update_login_user' %}" class="list-group-item list-group-item-action">Profile</a>
+    <a href="{% url 'settings:appearance' %}" class="list-group-item list-group-item-action">Appearance</a>
+  </div>
+</div>
+{% endblock %}
