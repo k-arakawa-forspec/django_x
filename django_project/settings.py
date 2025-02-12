@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'profiles',
     'users',
     'follows',
+    'settings',
 ]
 
 MIDDLEWARE = [
@@ -82,6 +83,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'lib.context_processors.set_cookie',
             ],
         },
     },
@@ -145,6 +147,8 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DEFAULT_COLOR_MODE = 'light'
 
 AUTH_USER_MODEL = 'accounts.User'
 
