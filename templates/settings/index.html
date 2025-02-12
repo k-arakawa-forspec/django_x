@@ -5,24 +5,38 @@
 {% block content %}
 <div class="container">
     <h1>設定</h1>
-    <hr>
 
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.non_field_errors }}
 
-        <h2>表示</h3>
+        <hr>
+        <div>
+            <h2>アカウント</h2>
 
-        {# ダークモード表示 #}
-        {# Boostrap Switches: https://getbootstrap.jp/docs/5.0/forms/checks-radios/#switches #}
-        <div class="form-check form-switch">
-            {# <input type="checkbox" name="color_mode_dark" class="form-check-input"> が出力されるようにしている #}
-            {{ form.color_mode_dark|add_class:"form-check-input" }}
-            {{ form.color_mode_dark|add_label_class:"form-check-label" }}
+            <button type="submit" form="logout_form" class="btn btn-link">ログアウトする</button>
+        </div>
+
+        <hr>
+        <div>
+            <h2>表示</h3>
+
+            {# ダークモード表示 #}
+            {# Boostrap Switches: https://getbootstrap.jp/docs/5.0/forms/checks-radios/#switches #}
+            <div class="form-check form-switch">
+                {# <input type="checkbox" name="color_mode_dark" class="form-check-input"> が出力されるようにしている #}
+                {{ form.color_mode_dark|add_class:"form-check-input" }}
+                {{ form.color_mode_dark|add_label_class:"form-check-label" }}
+            </div>
         </div>
 
         <br>
         <button type="submit" class="btn btn-lg btn-primary">更新</button>
     </form>
+
+    <form id="logout_form" action="{% url 'accounts:logout' %}" method="POST">
+        {% csrf_token %}
+    </form>
+
 </div>
 {% endblock %}
