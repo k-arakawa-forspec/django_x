@@ -5,6 +5,18 @@
 <div class="container">
     <h1 class="my-5">{{ profile.user.nickname }} さんのプロフィール</h1>
 
+    <!-- カラーモード切り替えボタン -->
+    <form action="{% url 'profiles:color_mode_update' %}" method="POST" class="mb-4">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-secondary">
+            {% if color_mode == "dark" %}
+                🌞 ライトモードに切り替え
+            {% else %}
+                🌙 ダークモードに切り替え
+            {% endif %}
+        </button>
+    </form>
+
     <div>
         {{ profile.self_introduction | linebreaksbr }}
     </div>
@@ -14,6 +26,6 @@
             <a href="{% url 'profiles:update_login_user' %}" class="btn btn-lg btn-primary">編集する</a>
         </div>
     {% endif %}
-
 </div>
 {% endblock %}
+
