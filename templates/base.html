@@ -1,6 +1,8 @@
 {% load static %}
 <!doctype html>
-<html lang="ja" data-bs-theme="ligth">
+<html lang="ja" data-bs-theme="{{ invert }}">
+  <!-- <html lang="ja" data-bs-theme="ligth"> -->
+  <!-- <html lang="ja" data-bs-theme="black"> -->
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -52,6 +54,12 @@
           <i class="bi bi-person-circle"></i>
           <span class="d-none d-md-inline">Profile</span>
         </a>
+
+        <a class="navbar-brand" href="{% url 'settings:settings' %}">
+          <i class="bi bi-person-circle"></i>
+          <span class="d-none d-md-inline">settings</span>
+        </a>
+
 
       </div>
     </nav>
