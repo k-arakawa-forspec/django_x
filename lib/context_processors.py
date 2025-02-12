@@ -1,5 +1,4 @@
 from django.conf import settings
-from django.http import HttpRequest
 
 def set_cookie(request):
     if request.COOKIES.get('color_mode') is None:
