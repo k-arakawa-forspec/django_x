@@ -1,2 +1,4 @@
-def is_dark_theme(request):
-    return {'is_dark_theme': request.COOKIES.get('is_dark_theme')}
+def theme(request):
+    return {
+        'theme': 'dark' if request.COOKIES.get('is_dark_theme') == 'True' else 'light'
+    }
