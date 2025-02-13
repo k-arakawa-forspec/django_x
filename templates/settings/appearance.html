@@ -10,7 +10,7 @@
     <hr />
     <div class="form-check form-switch">
       <label class="form-check-label" for="flexSwitchCheckDefault">Dark</label>
-      <input class="form-check-input" name="is_dark_theme" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+      <input class="form-check-input" name="is_dark_theme" type="checkbox" role="switch" id="flexSwitchCheckDefault" {% if is_dark_theme == 'True' %}checked{% endif %}>
       {{ form.is_dark_theme.errors }}
     </div>
     <button type="submit" class="btn btn-primary mt-3">Apply</button>
