@@ -12,3 +12,6 @@ django-glrm
 django-widget-tweaks
 
 Pillow
+
+# YAMLフォーマット
+PyYAML
