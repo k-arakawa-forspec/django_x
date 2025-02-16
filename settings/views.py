@@ -7,19 +7,20 @@ from .forms import SettingForm
 class SettingView(FormView):
     template_name = 'settings/settings.html'
     form_class = SettingForm
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    success_url = reverse_lazy('settings:settings')
+    
+    # トグルの初期状態を設定
+    def get_initial(self):
+        initial = super().get_initial()
         color_mode = self.request.COOKIES.get('color_mode', 'light')
-        # トグルの初期状態
         if color_mode == 'dark':
-            context['form'].fields['is_dark_mode'].initial = True
+            initial['is_dark_mode'] = True
         else:
-            context['form'].fields['is_dark_mode'].initial = False
-        return context
+            initial['is_dark_mode'] = False
+        return initial
 
     def form_valid(self, form):
         color_mode = 'dark' if form.cleaned_data['is_dark_mode'] else 'light'
-        response = HttpResponseRedirect(reverse('settings:settings'))
+        response = super().form_valid(form)
         response.set_cookie('color_mode', color_mode)
         return response
