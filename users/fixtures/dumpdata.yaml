@@ -1,0 +1,104 @@
+- model: accounts.user
+  pk: 1
+  fields:
+    password: pbkdf2_sha256$720000$fQzNlaXJ9MzXUC5ZJf3NHP$CamB5LYwLxzVv9B4Yv6QjXD/O5y0Gsd7QuoZQPohYAI=
+    last_login: 2025-01-16 09:53:57.150213+00:00
+    is_superuser: false
+    first_name: ''
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2024-10-08 10:00:41.455060+00:00
+    login_id: arakawa
+    nickname: Arakawa
+    groups: []
+    user_permissions: []
+    follow_user_set:
+    - 2
+    - 3
+- model: accounts.user
+  pk: 2
+  fields:
+    password: pbkdf2_sha256$720000$bbK2bWfTlcF1P1NiLpG6wf$MBHWmNY+PqGXe99nv42JAu3OUpoyybHv9M9X6cGB1bw=
+    last_login: 2024-12-11 16:25:50.063940+00:00
+    is_superuser: false
+    first_name: ''
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2024-10-09 13:32:13.683806+00:00
+    login_id: kajiyama
+    nickname: Kajiyama
+    groups: []
+    user_permissions: []
+    follow_user_set:
+    - 1
+- model: accounts.user
+  pk: 3
+  fields:
+    password: pbkdf2_sha256$720000$Hxnntx6CUx5WfJ7d0KEfmX$2H7oYgrpPA6vPpyykDNUv58MHA9MKi2nNaCo3OkPIbM=
+    last_login: 2024-11-13 14:43:56.769409+00:00
+    is_superuser: false
+    first_name: ''
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2024-10-11 10:13:46.801297+00:00
+    login_id: sanukida
+    nickname: Sanukida
+    groups: []
+    user_permissions: []
+    follow_user_set: []
+- model: profiles.profile
+  pk: 1
+  fields:
+    self_introduction: "古語としては、雨に限らず、風・波・雲などが夕方に起こり立つことを動詞で「夕立つ（ゆふだつ）」と呼んだ。\r\n「立つ」はこうした自然の動きが目に見えるようになることを表す。その名詞形が「夕立（ゆふだち）」である。\r\nただし一説に、天から降りることを「タツ」といい、雷神が斎場に降臨することを夕立と呼ぶとする。"
+    image: users/1/profile_CtF7lje.png
+    created_at: 2024-10-08 10:00:42.041561+00:00
+    updated_at: 2025-01-16 09:12:16.081790+00:00
+- model: profiles.profile
+  pk: 2
+  fields:
+    self_introduction: "ペンギンは、ペンギン目（Sphenisciformes）に属する鳥の総称である。ペンギン科（Spheniscidae）のみが現生する。\r\n主に南半球に生息する海鳥であり、飛ぶことができない。"
+    image: users/2/profile.png
+    created_at: 2024-10-09 13:32:14.217779+00:00
+    updated_at: 2024-12-11 16:25:59.194073+00:00
+- model: profiles.profile
+  pk: 3
+  fields:
+    self_introduction: "神社（じんじゃ・かむやしろ、旧字体：神\U000E0100社\U000E0101）とは、日本固有の宗教である神道の信仰に基づく祭祀施設[1]。産土神、天神地祇、皇室や氏族の祖神、偉人や義士などの霊などが神として祀られる[2]。文部科学省の資料によれば日本全国に約8万5千の神社があり[3]、登録されていない小神社を含めると10万社を超え、宗教法人格を有さない小さな祠等を含めると日本各地には20万社の神社があるといわれている"
+    image: ''
+    created_at: 2024-10-11 10:13:47.361846+00:00
+    updated_at: 2024-11-13 14:44:33.350298+00:00
+- model: posts.post
+  pk: 1
+  fields:
+    user: 1
+    content: "セルビア共和国（セルビアきょうわこく）、通称セルビアは、東南ヨーロッパ、バルカン半島中西部の内陸に位置する共和制国家。\r\n首都はベオグラード。北にハンガリー、北東にルーマニア、南東にブルガリア、西にボスニア・ヘルツェゴビナ、南にコソボ、北マケドニア、南西にモンテネグロと国境を接している。\r\nまた、同国のヴォイヴォディナ自治州部は西にクロアチアが接している。"
+    created_at: 2024-10-09 00:58:21.458798+00:00
+    updated_at: 2024-10-09 00:58:21.458846+00:00
+- model: posts.post
+  pk: 2
+  fields:
+    user: 1
+    content: "人類の最も古い絵画は、洞窟の凹凸を利用して描いた壁画（洞窟壁画）であり、人類が建物を作るようになって以後もその壁面に絵画が描かれるなど、絵画は居住空間や神聖な空間の壁と切り離せない存在だった。\r\n絵画は次第に洞窟や建物の壁面から離れ、独立した板や布（タブロー）に描かれるようになった。\r\nしかし、多くの人が同時に見ることができ、しかも空間全体を変容させて見る人を包み込む効果のある壁画・天井画は、今でも数多く制作されている。"
+    created_at: 2024-10-09 00:58:59.789699+00:00
+    updated_at: 2024-10-09 00:58:59.789738+00:00
+- model: posts.post
+  pk: 3
+  fields:
+    user: 1
+    content: "情報戦、心理戦もしくは宣伝戦、世論戦と和訳され、しばしば大きな政治的意味を持つ。政治宣伝ともいう。\r\n最初にプロパガンダと言う言葉を用いたのは、1622年に設置されたカトリック教会の布教聖省（Congregatio
+      de Propaganda Fide、現在の福音宣教省）の名称である。\r\nラテン語のpropagare（繁殖させる、種をまく）に由来する。"
+    created_at: 2024-10-09 00:59:39.795490+00:00
+    updated_at: 2024-10-09 00:59:39.795577+00:00
+- model: posts.post
+  pk: 4
+  fields:
+    user: 2
+    content: "南半球（みなみはんきゅう）とは、地球を含む惑星上などで赤道より南の部分を指す。以下、特に断らない限り地球の南半球について述べる。\r\n南半球には、南アメリカ大陸の約6/7、アフリカ大陸の半分未満、オーストラリア大陸、南極大陸がある。六大州としては、南アメリカ、オセアニア、アフリカ、アジアがある。地球上の陸地面積のうち、32.4%（4861万平方km）を南半球が占める。"
+    created_at: 2024-10-09 13:34:11.750763+00:00
+    updated_at: 2024-10-09 13:34:11.750807+00:00

@@ -2,5 +2,13 @@
 {% block title %}Django X{% endblock %}
 
 {% block content %}
-Home
+<div class="container">
+  <h2>フォロー中</h2>
+
+  <div>
+    {% for post in post_list %}
+        {% include "posts/partials/post.html" %}
+    {% endfor %}
+</div>
+</div>
 {% endblock %}
