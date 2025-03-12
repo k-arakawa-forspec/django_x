@@ -1,6 +1,55 @@
 {% extends "base.html" %}
-{% block title %}Django X{% endblock %}
+{% block title %}タイムライン{% endblock %}
 
 {% block content %}
-Home
+<div class="container mt-4">
+    <h2 class="mb-4">タイムライン</h2>
+
+    {% if posts %}
+        <div class="list-group">
+            {% for post in posts %}
+                <div class="list-group-item">
+                    <div class="d-flex align-items-start">
+                        <div class="flex-grow-1">
+                            <h5 class="mb-1">{{ post.user.nickname }}</h5>
+                            <small class="text-muted">{{ post.created_at|date:"Y-m-d H:i" }}</small>
+                            <p class="mb-1">{{ post.content }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center">まだ投稿がありません</p>
+    {% endif %}
+
+    <!-- ページネーション -->
+    {% if is_paginated %}
+        <nav class="mt-4">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1">最初</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">前へ</a>
+                    </li>
+                {% endif %}
+
+                <li class="page-item disabled">
+                    <span class="page-link">ページ {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+                </li>
+
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">次へ</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">最後</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endif %}
+</div>
 {% endblock %}
