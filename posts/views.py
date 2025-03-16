@@ -9,7 +9,7 @@ from .models import Post
 class CreateView(CreateView):
   form_class = forms.PostForm
   template_name = "posts/create.html"
-  success_url = reverse_lazy("accounts:home")
+  success_url = reverse_lazy("home:index")
 
   def form_valid(self, form):
     form.instance.user = self.request.user
