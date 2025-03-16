@@ -2,5 +2,15 @@
 {% block title %}Django X{% endblock %}
 
 {% block content %}
-Home
+    <!-- /templates/posts/list.html から丸コピ-->
+    <div class="container">
+        <!-- <h1>ポスト一覧</h1> -->
+        <h2>フォローしてるユーザのポスト一覧</h2>
+        <div>
+            {% for post in post_list %}
+                <!-- {% include "posts/partials/post.html" %} -->
+                {% include "home/partials/timeline.html" %}
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

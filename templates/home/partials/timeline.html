@@ -1,0 +1,23 @@
+{% load static %}
+<!-- templates/users/detail.html から丸コピ-->
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            {% if user.profile.image %}
+                <img src="{{ user.profile.image.url }}" class="img-fluid rounded-circle img-thumbnail border-0">
+            {% else %}
+                <img src="{% static 'image/default/users/profile.svg' %}" class="img-fluid rounded-circle img-thumbnail border-0" style="width: 100%;">
+            {% endif %} 
+        </div>
+    <!-- </div>
+    <div> -->
+        <span class="fw-bolder">
+            {{ post.user.nickname }}
+        </span>
+        <span class="opacity-50">{{ post.created_at}}</span>
+    </div>
+    <p>
+        <!-- {{ user.profile.self_introduction|linebreaksbr }} -->
+        {{ post.content|linebreaksbr }}
+    </p>
+</div>
