@@ -7,6 +7,8 @@
   packages = [
     pkgs.python3
     pkgs.sqlite
+    pkgs.python311Packages.pip
+    pkgs.python311Packages.virtualenv
   ];
   # Sets environment variables in the workspace
   env = {};

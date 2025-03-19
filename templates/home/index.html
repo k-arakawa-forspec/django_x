@@ -2,5 +2,15 @@
 {% block title %}Django X{% endblock %}
 
 {% block content %}
-Home
+<div class="container">
+    <h1>タイムライン</h1>
+
+    <div>
+        {% for post in post_list %}
+            {% include "posts/partials/post.html" %}
+        {% empty %}
+            <p>まだ投稿はありません。</p>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

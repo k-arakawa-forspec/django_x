@@ -1,0 +1,79 @@
+- model: accounts.user
+  pk: 1
+  fields:
+    password: pbkdf2_sha256$720000$PBktcbEMbdBTTuITGbIBER$f88T3IrVkBWE7LzSAHn9Nhk7BCubsns69qNp1oO/624=
+    last_login: 2024-12-08 07:53:17.658000+00:00
+    is_superuser: false
+    first_name: ''
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2024-10-17 10:10:26.828166+00:00
+    login_id: test01
+    nickname: テスト０１
+    groups: []
+    user_permissions: []
+    follow_user_set:
+    - 1
+    - 2
+- model: accounts.user
+  pk: 2
+  fields:
+    password: pbkdf2_sha256$720000$l3U8kfRh3tYLPAYhkl1bBb$3Hh9/dEV7d8lR2f/KjlrQzlt6FqjtrfcwRrKsvKUY7g=
+    last_login: 2025-03-16 06:10:22.294272+00:00
+    is_superuser: false
+    first_name: ''
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2024-10-20 17:24:32.031736+00:00
+    login_id: test02
+    nickname: テスト02
+    groups: []
+    user_permissions: []
+    follow_user_set:
+    - 1
+- model: profiles.profile
+  pk: 1
+  fields:
+    self_introduction: テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１テスト０１
+    image: ''
+    created_at: 2024-10-17 10:10:27.393686+00:00
+    updated_at: 2024-10-17 10:10:45.854363+00:00
+- model: profiles.profile
+  pk: 2
+  fields:
+    self_introduction: テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02テスト02
+    image: users/2/profile.png
+    created_at: 2024-10-20 17:24:32.599532+00:00
+    updated_at: 2025-01-13 09:34:47.386177+00:00
+- model: posts.post
+  pk: 1
+  fields:
+    user: 1
+    content: テスト０１
+    created_at: 2024-10-17 10:10:50.831694+00:00
+    updated_at: 2024-10-17 10:10:50.831761+00:00
+- model: posts.post
+  pk: 2
+  fields:
+    user: 1
+    content: テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト2テスト
+    created_at: 2024-12-08 07:57:30.106149+00:00
+    updated_at: 2024-12-08 07:57:30.106196+00:00
+- model: posts.post
+  pk: 3
+  fields:
+    user: 1
+    content: testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
+    created_at: 2024-12-08 07:58:02.446898+00:00
+    updated_at: 2024-12-08 07:58:02.446945+00:00
+- model: posts.post
+  pk: 4
+  fields:
+    user: 2
+    content: tesut
+    created_at: 2025-01-13 09:53:58.004203+00:00
+    updated_at: 2025-01-13 09:53:58.004240+00:00
