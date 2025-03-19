@@ -7,7 +7,7 @@
 
     <div>
         {% for post in post_list %}
-            {% include "home/partials/timeline.html" %}
+            {% include "posts/partials/post.html" %}
         {% empty %}
             <p>まだ投稿はありません。</p>
         {% endfor %}
