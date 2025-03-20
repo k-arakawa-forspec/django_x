@@ -1,0 +1,82 @@
+- model: accounts.user
+  pk: 101
+  fields:
+    password: pbkdf2_sha256$720000$m2CTs3GkQxNCLWyMMDBhN3$WAt7KezTRnXC+eeje3EWeOIOENorpINRaZg4kzbz/Nw=
+    last_login: 2025-02-15 06:44:01.201856+00:00
+    is_superuser: false
+    first_name: ''
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2024-10-17 10:10:43.268281+00:00
+    login_id: kitayama
+    nickname: きたやま
+    groups: []
+    user_permissions: []
+    follow_user_set:
+    - 102
+- model: accounts.user
+  pk: 102
+  fields:
+    password: pbkdf2_sha256$720000$m2CTs3GkQxNCLWyMMDBhN3$WAt7KezTRnXC+eeje3EWeOIOENorpINRaZg4kzbz/Nw=
+    last_login: 2025-01-10 05:43:54.930017+00:00
+    is_superuser: false
+    first_name: ''
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2024-11-10 13:38:24.250222+00:00
+    login_id: nishikawa
+    nickname: にしかわ
+    groups: []
+    user_permissions: []
+    follow_user_set:
+    - 101
+- model: profiles.profile
+  pk: 101
+  fields:
+    self_introduction: '二酸化ケイ素（にさんかけいそ、英：Silicon dioxide）は、化学式SiO2で表されるケイ素の酸化物で、地殻を形成する物質の一つとして重要である。シリカ（英:
+      silica）、無水ケイ酸、ケイ酸、酸化シリコンとも呼ばれる。純粋な二酸化ケイ素は無色透明であるが、自然界には不純物を含む有色のものも存在する。代表的なシリカ鉱物は石英（英:
+      quartz、水晶）であるが、それ以外にも圧力、温度の条件等の違いにより多様な結晶相（結晶多形）が生成され、自然界では長石類に次いで産出量が多い。マグマの粘性を左右する物質でもある。鉱物以外では植物
+      (イネ・スギナ・サトウキビなど) にも含有され、生体内にも微量ながら含まれている。'
+    image: users/101/profile_D30ERHm.jpg
+    created_at: 2024-10-17 10:10:43.823272+00:00
+    updated_at: 2025-01-07 14:36:48.862865+00:00
+- model: profiles.profile
+  pk: 102
+  fields:
+    self_introduction: "金平糖（こんぺいとう、コンペイトー）とは、砂糖と下味のついた水分を原料にした、表面に凹凸状の突起（角状）をもつ小球形の和菓子。\r\n金米糖、金餅糖、糖花とも表記される。語源はポルトガル語のコンフェイト（confeito
+      [kõˈfɐjtu]、糖菓の意）。金平糖はカステラ・有平糖などとともに南蛮菓子としてポルトガルから九州や西日本へ伝えられたとされる。初めて日本に金平糖が伝わった時期については諸説あるが、戦国時代の1546年（天文15年）とも言われている。"
+    image: users/102/profile.JPG
+    created_at: 2024-11-10 13:38:24.824999+00:00
+    updated_at: 2025-01-07 14:32:50.000643+00:00
+- model: posts.post
+  pk: 901
+  fields:
+    user: 101
+    content: test
+    created_at: 2024-11-10 03:34:00.680731+00:00
+    updated_at: 2024-11-10 03:34:00.680778+00:00
+- model: posts.post
+  pk: 902
+  fields:
+    user: 102
+    content: 金平糖が大好き
+    created_at: 2024-11-10 13:39:32.955314+00:00
+    updated_at: 2024-11-10 13:39:32.955348+00:00
+- model: posts.post
+  pk: 903
+  fields:
+    user: 102
+    content: にんじんしりしり
+    created_at: 2025-01-07 14:35:52.313809+00:00
+    updated_at: 2025-01-07 14:35:52.313948+00:00
+- model: posts.post
+  pk: 904
+  fields:
+    user: 101
+    content: あああ
+    created_at: 2025-01-10 05:41:52.511549+00:00
+    updated_at: 2025-01-10 05:41:52.511592+00:00
