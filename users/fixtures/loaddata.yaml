@@ -32,8 +32,26 @@
     nickname: にしかわ
     groups: []
     user_permissions: []
+    follow_user_set: []
+- model: accounts.user
+  pk: 103
+  fields:
+    password: pbkdf2_sha256$720000$m2CTs3GkQxNCLWyMMDBhN3$WAt7KezTRnXC+eeje3EWeOIOENorpINRaZg4kzbz/Nw=
+    last_login: 2025-01-07 14:34:29.381556+00:00
+    is_superuser: false
+    first_name: ''
+    last_name: ''
+    email: ''
+    is_staff: false
+    is_active: true
+    date_joined: 2024-12-11 15:04:31.563626+00:00
+    login_id: minamitani
+    nickname: みなみたに
+    groups: []
+    user_permissions: []
     follow_user_set:
-    - 101
+      - 101
+      - 102
 - model: profiles.profile
   pk: 101
   fields:
@@ -52,6 +70,13 @@
     image: users/102/profile.JPG
     created_at: 2024-11-10 13:38:24.824999+00:00
     updated_at: 2025-01-07 14:32:50.000643+00:00
+- model: profiles.profile
+  pk: 103
+  fields:
+    self_introduction: "にんじんしりしりは、沖縄県の郷土料理である。「しりしり」という言葉は「千切り」という意味の沖縄の方言。にんじんしりしりは日常的な家庭料理として沖縄県全域で食されている。スライサー（千切り器）で細くおろした人参と卵を炒めて調味料で味付けした料理。沖縄の家庭で手軽に作られている。「しりしり」というのは繊切りという意味の沖縄方言である。また、スライサーを使う時の「すりすり」という音から名前がついたという説もある。\r\n沖縄では専用の「しりしり器」を用いることが一般的で、沖縄の家庭では「一家に一台」レベルで普及しているとも言われる。一般的なスライサーとの違いは「刃がやや甘め」になっていることで、出来上がりの切り口がギザギザになり油や調味料がなじみやすくなる。"
+    image: users/103/profile.JPG
+    created_at: 2024-12-11 15:04:32.147816+00:00
+    updated_at: 2025-01-07 14:35:21.050830+00:00
 - model: posts.post
   pk: 901
   fields:
@@ -69,14 +94,22 @@
 - model: posts.post
   pk: 903
   fields:
-    user: 102
+    user: 103
     content: にんじんしりしり
     created_at: 2025-01-07 14:35:52.313809+00:00
     updated_at: 2025-01-07 14:35:52.313948+00:00
 - model: posts.post
   pk: 904
   fields:
-    user: 101
+    user: 103
     content: あああ
     created_at: 2025-01-10 05:41:52.511549+00:00
     updated_at: 2025-01-10 05:41:52.511592+00:00
+- model: posts.post
+  pk: 905
+  fields:
+    user: 103
+    content: みなみたに
+    created_at: 2025-01-10 05:41:52.511549+00:00
+    updated_at: 2025-01-10 05:41:52.511592+00:00
+  

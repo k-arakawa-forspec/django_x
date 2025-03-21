@@ -190,7 +190,7 @@ LOGGING = {
         },
         'django.db.backends': {
             # Queryログが邪魔な場合は none に切替
-#            'handlers': ['none'],
+            'handlers': ['none'],
             'handlers': ['console'],
             'level': 'DEBUG',
             'propagate': False,
