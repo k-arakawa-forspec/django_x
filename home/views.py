@@ -9,8 +9,9 @@ class IndexView(ListView):
 
   def get_queryset(self):
     return (
-      super().get_queryset()
-      .select_related('user__profile')
+      super()
+      .get_queryset()
       .filter(user__follower_user_set=self.request.user)
+      .select_related('user__profile')
       .order_by('-created_at')
     )
