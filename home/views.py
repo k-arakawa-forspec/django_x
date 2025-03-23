@@ -11,6 +11,6 @@ class IndexView(ListView):
     return (
       super().get_queryset()
       .select_related('user__profile')
-      .filter(user_id__in=[user.id for user in self.request.user.follow_user_set.all()])
+      .filter(user_id__in=self.request.user.follow_user_set.values('id'))
       .order_by('-created_at')
     )
