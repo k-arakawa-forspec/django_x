@@ -11,5 +11,5 @@ class IndexView(ListView):
   def get_queryset(self):
     queryset = super().get_queryset()
     ids = [followed_users.id for followed_users in self.request.user.follow_user_set.all()]
-    queryset = queryset.filter(user__in=ids)
+    queryset = queryset.select_related('user__profile').filter(user__in=ids)
     return queryset
