@@ -6,10 +6,11 @@ from posts.models import Post
 class IndexView(ListView):
   template_name = "home/index.html"
   model = Post
-  ordering = ['-created_at']
 
   def get_queryset(self):
-    queryset = super().get_queryset()
-    ids = [followed_users.id for followed_users in self.request.user.follow_user_set.all()]
-    queryset = queryset.select_related('user__profile').filter(user__in=ids)
-    return queryset
+    return (
+      super().get_queryset()
+      .select_related('user__profile')
+      .filter(user_id__in=[user.id for user in self.request.user.follow_user_set.all()])
+      .order_by('-created_at')
+    )
